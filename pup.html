@@ -109,6 +109,42 @@ camera.lookAt(scene.position); // or the origin
 		scene.add(linee)
 		linee.position.set(0,2,6)
 
+		//freckles
+		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312, transparent: true, opacity: 0.9});
+		freckle1 = new THREE.Mesh(boxGeom, boxMat)
+		freckle1.position.set(3,3,6);
+		scene.add(freckle1);
+
+		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312, transparent: true, opacity: 0.9});
+		freckle2 = new THREE.Mesh(boxGeom, boxMat)
+		freckle2.position.set(4,1,6);
+		scene.add(freckle2);
+
+		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312, transparent: true, opacity: 0.9});
+		freckle3 = new THREE.Mesh(boxGeom, boxMat)
+		freckle3.position.set(2,1,6);
+		scene.add(freckle3);
+
+		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312, transparent: true, opacity: 0.9});
+		freckle4 = new THREE.Mesh(boxGeom, boxMat)
+		freckle4.position.set(-3,3,6);
+		scene.add(freckle4);
+
+		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312, transparent: true, opacity: 0.9});
+		freckle5 = new THREE.Mesh(boxGeom, boxMat)
+		freckle5.position.set(-4,1,6);
+		scene.add(freckle5);
+
+		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312, transparent: true, opacity: 0.9});
+		freckle6 = new THREE.Mesh(boxGeom, boxMat)
+		freckle6.position.set(-2,1,6);
+		scene.add(freckle6);
 	}
 
 
