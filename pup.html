@@ -145,6 +145,26 @@ camera.lookAt(scene.position); // or the origin
 		freckle6 = new THREE.Mesh(boxGeom, boxMat)
 		freckle6.position.set(-2,1,6);
 		scene.add(freckle6);
+
+		//smile
+		
+		var smileGeom = new THREE.TorusGeometry( 1, 0.35, 6,30, Math.PI );
+		var smile = new THREE.Mesh(smileGeom,snoutMatte)
+		scene.add(smile)
+		smile.rotation.z=9.45
+		smile.position.set(0,-2,5.8)
+		
+		//body
+		var boxGeomTwo = new THREE.BoxGeometry(12,12,19);
+		var body = new THREE.Mesh(boxGeomTwo, boxMat);
+		body.position.set(0,-12,-7);
+		scene.add(body)
+		//belly
+		var bellyGeom = new THREE.BoxGeometry(9,10,4);
+		var bellyColor = new THREE.MeshPhongMaterial({color:006461});
+		var belly = new THREE.Mesh(bellyGeom,bellyColor);
+		scene.add(belly);
+		belly.position.set(0,-13,1)
 	}
 
 
