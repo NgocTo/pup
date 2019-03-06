@@ -49,28 +49,28 @@ camera.lookAt(scene.position); // or the origin
 	function makeDog() {
 		var boxGeom = new THREE.BoxGeometry(12, 12, 12);
 // head
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xE5A860, transparent: true, opacity: 0.9});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0xE5A860});
 		dog = new THREE.Mesh(boxGeom, boxMat);
 		scene.add(dog);
 		//eyes
 		var boxGeom = new THREE.BoxGeometry(2, 5.5, 5.5);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE, transparent: true, opacity: 0.9});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE});
 		eye = new THREE.Mesh(boxGeom, boxMat)
 		eye.position.set(6,2,2);
 		scene.add(eye);
 		var boxGeom = new THREE.BoxGeometry(1, 3, 3);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312, transparent: true, opacity: 0.9});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312});
 		eyeballr = new THREE.Mesh(boxGeom, boxMat)
 		eyeballr.position.set(7,2,2);
 		scene.add(eyeballr);
 		//left
 		var boxGeom = new THREE.BoxGeometry(2, 5.5, 5.5);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE, transparent: true, opacity: 0.9});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE});
 		eyel = new THREE.Mesh(boxGeom, boxMat)
 		eyel.position.set(-6,2,2);
 		scene.add(eyel);
 		var boxGeom = new THREE.BoxGeometry(1, 3, 3);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312, transparent: true, opacity: 0.9});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312});
 		eyebl = new THREE.Mesh(boxGeom, boxMat)
 		eyebl.position.set(-7,2,2);
 		scene.add(eyebl);
@@ -100,32 +100,32 @@ camera.lookAt(scene.position); // or the origin
 		linee.position.set(0,2,6)
 		//freckles
 		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312, transparent: true, opacity: 0.9});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312});
 		freckle1 = new THREE.Mesh(boxGeom, boxMat)
 		freckle1.position.set(3,3,6);
 		scene.add(freckle1);
 		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312, transparent: true, opacity: 0.9});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312});
 		freckle2 = new THREE.Mesh(boxGeom, boxMat)
 		freckle2.position.set(4,1,6);
 		scene.add(freckle2);
 		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312, transparent: true, opacity: 0.9});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312});
 		freckle3 = new THREE.Mesh(boxGeom, boxMat)
 		freckle3.position.set(2,1,6);
 		scene.add(freckle3);
 		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312, transparent: true, opacity: 0.9});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312});
 		freckle4 = new THREE.Mesh(boxGeom, boxMat)
 		freckle4.position.set(-3,3,6);
 		scene.add(freckle4);
 		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312, transparent: true, opacity: 0.9});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312});
 		freckle5 = new THREE.Mesh(boxGeom, boxMat)
 		freckle5.position.set(-4,1,6);
 		scene.add(freckle5);
 		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312, transparent: true, opacity: 0.9});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312});
 		freckle6 = new THREE.Mesh(boxGeom, boxMat)
 		freckle6.position.set(-2,1,6);
 		scene.add(freckle6);
@@ -154,24 +154,24 @@ camera.lookAt(scene.position); // or the origin
 		//feets
 
 		var boxGeom = new THREE.BoxGeometry(4, 4, 3	);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE, transparent: true, opacity: 0.9});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE});
 		footRight = new THREE.Mesh(boxGeom, boxMat)
 		footRight.position.set(3,-15.75,4.5);
 		scene.add(footRight);
 
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE, transparent: true, opacity: 0.9});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE});
 		footLeft = new THREE.Mesh(boxGeom, boxMat)
 		footLeft.position.set(-3,-15.75,4.5);
 		scene.add(footLeft);
 
 		var boxGeom = new THREE.BoxGeometry(6, 4, 8	);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE, transparent: true, opacity: 0.9});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE});
 		backRight = new THREE.Mesh(boxGeom, boxMat)
 		backRight.position.set(6,-15.75,-8);
 		scene.add(backRight);
 
 		var boxGeom = new THREE.BoxGeometry(6, 4, 8	);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE, transparent: true, opacity: 0.9});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE});
 		backLeft = new THREE.Mesh(boxGeom, boxMat)
 		backLeft.position.set(-6,-15.75,-8);
 		scene.add(backLeft);
