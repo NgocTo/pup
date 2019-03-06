@@ -49,11 +49,11 @@ camera.lookAt(scene.position); // or the origin
 
 	makeDog();
 	makeRoom();
-	
-	
+
+
 	function makeDog() {
 		var boxGeom = new THREE.BoxGeometry(12, 12, 12);
-<<<<<<< HEAD
+// head
 		var boxMat = new THREE.MeshPhongMaterial({color: 0xE5A860, transparent: true, opacity: 0.9});
 		dog = new THREE.Mesh(boxGeom, boxMat);
 		scene.add(dog);
@@ -62,7 +62,7 @@ camera.lookAt(scene.position); // or the origin
 		var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE, transparent: true, opacity: 0.9});
 		eye = new THREE.Mesh(boxGeom, boxMat)
 		eye.position.set(6,2,2);
-		scene.add(eye);	
+		scene.add(eye);
 
 		var boxGeom = new THREE.BoxGeometry(1, 3, 3);
 		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312, transparent: true, opacity: 0.9});
@@ -82,8 +82,8 @@ camera.lookAt(scene.position); // or the origin
 		eyebl = new THREE.Mesh(boxGeom, boxMat)
 		eyebl.position.set(-7,2,2);
 		scene.add(eyebl);
-		
-=======
+
+
 		var boxMat = new THREE.MeshPhongMaterial({color: 0xc2f442});
 		dog = new THREE.Mesh(boxGeom, boxMat);
 		scene.add(dog);
@@ -109,7 +109,6 @@ camera.lookAt(scene.position); // or the origin
 		scene.add(linee)
 		linee.position.set(0,2,6)
 
->>>>>>> b11107fffbabac1a00a671bd31b75660e40f35e1
 	}
 
 
