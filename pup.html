@@ -18,11 +18,20 @@
 	var scene = new THREE.Scene();
 
 	// CAMERA
-	var camera = new THREE.PerspectiveCamera(500, window.innerWidth / window.innerHeight, 0.1, 1000);
-	camera.position.x = 0;
-	camera.position.y = 7;
-	camera.position.z = 20;
-	camera.lookAt(scene.position);
+// 	var camera = new THREE.OrthographicCamera( 200 / - 2, 200 / 2, 200 / 2, 200 / - 2, 1, 1000 );
+// scene.add(camera);
+
+var aspect = window.innerWidth / window.innerHeight;
+var d = 20;
+camera = new THREE.OrthographicCamera( - d * aspect, d * aspect, d, - d, 1, 1000 );
+
+camera.position.set( 20, 5, 50 ); // all components equal
+camera.lookAt(scene.position); // or the origin
+	// var camera = new THREE.PerspectiveCamera(500, window.innerWidth / window.innerHeight, 0.1, 1000);
+	// camera.position.x = 0;
+	// camera.position.y = 7;
+	// camera.position.z = 20;
+	// camera.lookAt(scene.position);
 
 	// RENDERER
 	var renderer = new THREE.WebGLRenderer({antialias:true});
@@ -35,13 +44,35 @@
     makeRoom();
 	function makeDog() {
 		var boxGeom = new THREE.BoxGeometry(12, 12, 12);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xc2f442, transparent: true, opacity: 0.9});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0xc2f442});
 		dog = new THREE.Mesh(boxGeom, boxMat);
 		scene.add(dog);
+		//ears
+		var ear = new THREE.BoxGeometry(6,8,2);
+		var boxMatt = new THREE.MeshPhongMaterial({color: 006491});
+		earone = new THREE.Mesh(ear, boxMatt);
+		earone.position.set(9,9,-5);
+		earone.rotation.z=15;
+		scene.add(earone)
+		var eartwo = earone.clone();
+		eartwo.position.set(-9,9,-5);
+		eartwo.rotation.z=95;
+		scene.add(eartwo)
+		//nose
+		var snoutBox = new THREE.BoxGeometry(3,2,3);
+		var line = new THREE.BoxGeometry(0.5,6,0.5)
+		var snoutMatte = new THREE.MeshPhongMaterial({color: 006491});
+		var snout = new THREE.Mesh(snoutBox,snoutMatte);
+		scene.add(snout);
+		snout.position.set(0,5.20,6);
+		var linee = new THREE.Mesh(line,snoutMatte)
+		scene.add(linee)
+		linee.position.set(0,2,6)
+
 	}
 
     function makeRoom() {
-        var geometry = new THREE.BoxGeometry(70, 50, 50);
+        var geometry = new THREE.BoxGeometry(170, 150, 150);
         var roomMaterialArray = [];
         // order to add materials: x+,x-,y+,y-,z+,z-
         roomMaterialArray.push(new THREE.MeshBasicMaterial({color: 0xfaf6eb, side: THREE.DoubleSide}));
