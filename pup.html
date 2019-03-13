@@ -42,10 +42,11 @@ camera.lookAt(scene.position); // or the origin
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	document.body.appendChild(renderer.domElement);
 
-	var dog; var room;
+	var dog; var room; var button;
 
 	makeDog();
 	makeRoom();
+	makeButton()
 	function makeDog() {
 		var boxGeom = new THREE.BoxGeometry(12, 12, 12);
 // head
@@ -201,6 +202,62 @@ camera.lookAt(scene.position); // or the origin
         var room = new THREE.Mesh(geometry, material);
         scene.add(room);
     }
+
+		function makeButton(){
+			var boxGeom = new THREE.BoxGeometry(5, 5.5, 5.5);
+			var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE});
+			buttonOne = new THREE.Mesh(boxGeom, boxMat)
+			buttonOne.position.set(30,20,20);
+			scene.add(buttonOne);
+
+			var boxGeom = new THREE.BoxGeometry(5, 5.5, 5.5);
+			var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE});
+			buttonTwo = new THREE.Mesh(boxGeom, boxMat)
+			buttonTwo.position.set(30,10,20);
+			scene.add(buttonTwo);
+
+			var boxGeom = new THREE.BoxGeometry(5, 5.5, 5.5);
+			var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE});
+			buttonThree = new THREE.Mesh(boxGeom, boxMat)
+			buttonThree.position.set(30,0,20);
+			scene.add(buttonThree);
+
+			var boxGeom = new THREE.BoxGeometry(5, 5.5, 5.5);
+			var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE});
+			buttonFour = new THREE.Mesh(boxGeom, boxMat)
+			buttonFour.position.set(30,-10,20);
+			scene.add(buttonFour);
+
+	}
+
+
+	//changing the colors
+
+	function buttonOne.on("click"({
+		var schemeOne = [earsTail,body,bellyFeet];
+
+		function(earsTail){
+			ear.color=0xCD2AD77;
+			earTwo.color=0xCD2AD77;
+			tail.color=0xCD2AD77;
+		}
+
+		function(body){
+			body.color=0xCD2AD77;
+			dog.color=0xCD2AD77;
+		}
+		function(bellyFeet){
+			belly.color=0xCD2AD77;
+			backLeft.color=0xCD2AD77;
+			backRight.color=0xCD2AD77;
+			footLeft.color=0xCD2AD77;
+			footRight.color=0xCD2AD77;
+		}
+	}))
+
+
+
+
 	// LIGHT
     var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
 	var light = new THREE.AmbientLight(0x404040, 0.1);
