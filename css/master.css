@@ -7,15 +7,19 @@ body {
     margin:0 auto;
     height: 100vh;
     width: 100%;
-    margin-top: 15vh;
+    padding-top: 15vh;
     text-align: center;
     font-size: 1.8rem;
     font-weight: bold;
     color: #505050;
+    background-color: #faf6eb;
 }
 .title {
     color: #693393;
     font-size: 8rem;
     font-family: 'Baloo', cursive;
     /* letter-spacing: 0.3em; */
+}
+.hide {
+    display: none;
 }
