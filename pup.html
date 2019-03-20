@@ -14,8 +14,8 @@
 	    <div class="title">P . U . P</div>
 		<div>Personal Uplifting Pal</div>
 	</div>
-	<button id="greyDog">Click me</button>
-	<button id="brownDog">Grey</button>
+	<button id="buttonThatMakesStuffHappen">Click me</button>
+	<button id="goldButton">gold</button>
 <script src="node_modules/leapjs/leap-0.6.4.min.js"></script>
 <script src="lib/frame.js"></script>
 <script
@@ -57,13 +57,15 @@ camera.lookAt(scene.position); // or the origin
 
 	var dog;
 	var room; var btn;
+
 	// array earsTail,headBody,bellyFeet
 	var schemeOne = [0xCD2AD77, 0x56544E, 0xF4F1E6];
 	var schemeTwo = [0xCD2AD77, 0xCD2AD77, 0xCD2AD77];
 	var schemeThree = [0xCD2AD77, 0xCD2AD77, 0xCD2AD77];
 	makeDog(schemeOne);
 
-	$("#greyDog").click(function(e){
+
+	$("#buttonThatMakesStuffHappen").click(function(e){
 		dog.earone.material.color.setHex('0x56544E');
 		dog.material.color.setHex('0xF4F1E6');
 		dog.body.material.color.setHex('0x56544E');
@@ -75,16 +77,20 @@ camera.lookAt(scene.position); // or the origin
 		dog.backRight.material.color.setHex('0x56544E');
 	});
 
-	$("#brownDog").click(function(e){
-		dog.earone.material.color.setHex('0x56544E');
-		dog.material.color.setHex('0xF4F1E6');
-		dog.body.material.color.setHex('0x56544E');
-		dog.tail.material.color.setHex('0x56544E');
-		dog.belly.material.color.setHex('0x56544E');
-		dog.footLeft.material.color.setHex('0x56544E');
-		dog.footRight.material.color.setHex('0x56544E');
-		dog.backLeft.material.color.setHex('0x56544E');
-		dog.backRight.material.color.setHex('0x56544E');
+
+
+	///gold dog
+
+	$("#goldButton").click(function(e){
+		dog.earone.material.color.setHex('0xe4c567');
+		dog.material.color.setHex('0xf5e2a6');
+		dog.body.material.color.setHex('0xf5e2a6');
+		dog.tail.material.color.setHex('0xe4c567');
+		dog.belly.material.color.setHex('0xd5b759');
+		dog.footLeft.material.color.setHex('0xd5b759');
+		dog.footRight.material.color.setHex('0xd5b759');
+		dog.backLeft.material.color.setHex('0xd5b759');
+		dog.backRight.material.color.setHex('0xd5b759');
 	});
 
 	makeRoom();
