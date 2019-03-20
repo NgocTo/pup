@@ -107,8 +107,6 @@ camera.lookAt(scene.position); // or the origin
 		dog.backRight.material.color.setHex('0xF7FFFE');
 	});
 
-
-
 	///gold dog
 
 	$("#goldButton").click(function(e){
@@ -122,6 +120,42 @@ camera.lookAt(scene.position); // or the origin
 		dog.backLeft.material.color.setHex('0xd5b759');
 		dog.backRight.material.color.setHex('0xd5b759');
 	});
+
+	// 1. Make arrays of sayings
+	var happySayings = [
+  "You’re here! I missed you so much!!! I’m so excited to see you!",
+  "I love you, hooman!",
+  "Happiness is a warm puppy",
+	"Never trust a human who doesn’t love dogs!",
+	"How to have a good day: Wake up, Pet me, Done!",
+	"Anyone who doesn’t know what soap tastes like has never tried to wash me",
+	"I DO want to go outside! How did you know?",
+	"Why do humans harvest my poop?",
+	"I don’t want the ball. But when you ask me “who wants the ball?” I then realize that I want the ball.",
+	"It’s all grey to me!",
+	"Why worry when you can just pet me?",
+	"SQUIRREL? WHERE???",
+	"Everyone stay calm!",
+	"There was a squirrel, I saw it, you gotta believe me!",
+	"Why can’t I pee in the house if you can?",
+	"You are not the boss of me! Oh wait, yes you are.",
+	"If you want the stick back, why do you keep throwing it away?",
+	"Hello there!",
+	"Pets please!",
+	"I’m a heckin’ good boy and so are you!",
+	"On a scale of 1 to 10, you are a 12",
+	"If you do not pet me RIGHT NOW I swear I WILL DIE!",
+	"Where are you going? Take me with you!"
+	];
+
+	// 2. Display saying on click
+	dog.belly.addEventListener ('mousedown', function(){
+		console.log(happySayings)
+	},false);
+		console.log(dog.belly);
+
+	// 3. Set state for the display saying function
+	// 4. Show different aray depending on state
 
 	makeRoom();
 	// makeButton();
