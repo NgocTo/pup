@@ -15,6 +15,9 @@
 		<div>Personal Uplifting Pal</div>
 	</div>
 	<button id="buttonThatMakesStuffHappen">Click me</button>
+	<button id="blackdog">Click me</button>
+	<button id="whitedog">Click me</button>
+
 <script src="node_modules/leapjs/leap-0.6.4.min.js"></script>
 <script src="lib/frame.js"></script>
 <script
@@ -73,9 +76,32 @@ camera.lookAt(scene.position); // or the origin
 		dog.backLeft.material.color.setHex('0x56544E');
 		dog.backRight.material.color.setHex('0x56544E');
 	});
-	
+	//button for black dog scheme
+	$("#blackdog").click(function(e){
+		dog.earone.material.color.setHex('0x56544E');
+		dog.material.color.setHex('0x56544E');
+		dog.body.material.color.setHex('0x56544E');
+		dog.tail.material.color.setHex('0x56544E');
+		dog.belly.material.color.setHex('0xF7FFFE');
+		dog.footLeft.material.color.setHex('0xF7FFFE');
+		dog.footRight.material.color.setHex('0xF7FFFE');
+		dog.backLeft.material.color.setHex('0xF7FFFE');
+		dog.backRight.material.color.setHex('0xF7FFFE');
+	});
+	//button for white dog scheme
+	$("#whitedog").click(function(e){
+		dog.earone.material.color.setHex('0xDCDCDC');
+		dog.material.color.setHex('0xF5F1EC');
+		dog.body.material.color.setHex('0xF5F1EC');
+		dog.tail.material.color.setHex('0xDCDCDC');
+		dog.belly.material.color.setHex('0xDCDCDC');
+		dog.footLeft.material.color.setHex('0xF7FFFE');
+		dog.footRight.material.color.setHex('0xF7FFFE');
+		dog.backLeft.material.color.setHex('0xF7FFFE');
+		dog.backRight.material.color.setHex('0xF7FFFE');
+	});
 	makeRoom();
-	makeButton();
+	// makeButton();
 
 	function makeDog(colorArray) {
 		var boxGeom = new THREE.BoxGeometry(11, 11, 11);
@@ -85,7 +111,7 @@ camera.lookAt(scene.position); // or the origin
 			
 		//eyes
 		var boxGeom = new THREE.BoxGeometry(2, 5.5, 5.5);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0xFFFFFF});
 		eye = new THREE.Mesh(boxGeom, boxMat)
 		eye.position.set(6,2,2);
 		scene.add(eye);
@@ -122,7 +148,7 @@ camera.lookAt(scene.position); // or the origin
 		//nose
 		var snoutBox = new THREE.BoxGeometry(3,2,3);
 		var line = new THREE.BoxGeometry(0.5,6,0.5)
-		var snoutMatte = new THREE.MeshPhongMaterial({color: 0x006491});
+		var snoutMatte = new THREE.MeshPhongMaterial({color: 0x0C1312});
 		var snout = new THREE.Mesh(snoutBox,snoutMatte);
 		scene.add(snout);
 		snout.position.set(0,5.20,6);
@@ -231,7 +257,7 @@ camera.lookAt(scene.position); // or the origin
         scene.add(room);
     }
 
-	function makeButton(){
+	
 		var boxGeom = new THREE.BoxGeometry(5, 5.5, 5.5);
 		var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE});
 		buttonOne = new THREE.Mesh(boxGeom, boxMat)
@@ -255,7 +281,13 @@ camera.lookAt(scene.position); // or the origin
 		buttonFour = new THREE.Mesh(boxGeom, boxMat)
 		buttonFour.position.set(30,-10,20);
 		scene.add(buttonFour);
-	}
+	
+	var domEvents = new Threex.DomEvents(camera, renderer.domElement)
+	domEvents.addEventListener(buttonFour, 'click', event =>{
+		console.log("hihihi")
+	},false)
+
+
 
 	// LIGHT
     var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
