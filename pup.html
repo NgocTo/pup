@@ -59,17 +59,17 @@ camera.lookAt(scene.position); // or the origin
 	var room; var btn;
 
 	// array earsTail,headBody,bellyFeet
-	var schemeOne = [0xae7b34, 0xf6d19d, 0xc08d45];
+	var schemeOne = [0x8f6223, 0xf6d19d, 0xc08d45];
 	var schemeTwo = [0xc08d45, 0xc08d45, 0xc08d45];
 	var schemeThree = [0xc08d45, 0xc08d45, 0xc08d45];
 	makeDog(schemeOne);
 
 
 	$("#brownDog").click(function(e){
-		dog.earone.material.color.setHex('0xae7b34');
+		dog.earone.material.color.setHex('0x8f6223');
 		dog.material.color.setHex('0xf6d19d');
 		dog.body.material.color.setHex('0xdcb275');
-		dog.tail.material.color.setHex('0xae7b34');
+		dog.tail.material.color.setHex('0x8f6223');
 		dog.belly.material.color.setHex('0xfbd8a8');
 		dog.footLeft.material.color.setHex('0xc08d45');
 		dog.footRight.material.color.setHex('0xc08d45');
@@ -128,7 +128,7 @@ camera.lookAt(scene.position); // or the origin
 
 		//ears
 		var ear = new THREE.BoxGeometry(6,8,2);
-		var boxMatt = new THREE.MeshPhongMaterial({color: 0xae7b34});
+		var boxMatt = new THREE.MeshPhongMaterial({color: 0x8f6223});
 		dog.earone = earone = new THREE.Mesh(ear, boxMatt);
 		earone.position.set(9,9,-5);
 		earone.rotation.z=15;
@@ -228,7 +228,7 @@ camera.lookAt(scene.position); // or the origin
 
 		//tail
 		var boxTail = new THREE.BoxGeometry(3,10,2)
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xae7b34});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x8f6223});
 		var tail = dog.tail = new THREE.Mesh(boxTail, boxMat);
 		tail.position.set(0,-6,-21.5)
 		tail.rotation.x=2
