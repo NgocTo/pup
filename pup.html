@@ -63,9 +63,9 @@ camera.lookAt(scene.position); // or the origin
 	var room; var btn;
 
 	// array earsTail,headBody,bellyFeet
-	var schemeOne = [0x8f6223, 0xf6d19d, 0xc08d45];
-	var schemeTwo = [0xc08d45, 0xc08d45, 0xc08d45];
-	var schemeThree = [0xc08d45, 0xc08d45, 0xc08d45];
+	var schemeOne = [0x8f6223, 0xf6d19d, 0x8f6223];
+	var schemeTwo = [0x8f6223, 0x8f6223, 0x8f6223];
+	var schemeThree = [0x8f6223, 0x8f6223, 0x8f6223];
 	makeDog(schemeOne);
 
 
@@ -126,7 +126,7 @@ camera.lookAt(scene.position); // or the origin
 
 	function makeDog(colorArray) {
 		var boxGeom = new THREE.BoxGeometry(11, 11, 11);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xf6d19d});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0xdcb275});
 		dog = new THREE.Mesh(boxGeom, boxMat);
 		scene.add(dog);
 
@@ -218,7 +218,7 @@ camera.lookAt(scene.position); // or the origin
 
 		//body
 		var boxGeomTwo = new THREE.BoxGeometry(12,12,19);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xdcb275});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0xcea467});
 		var body = dog.body = new THREE.Mesh(boxGeomTwo, boxMat);
 		body.position.set(0,-12,-7);
 		scene.add(body)
@@ -232,24 +232,24 @@ camera.lookAt(scene.position); // or the origin
 
 		//feets
 		var boxGeom = new THREE.BoxGeometry(4, 4, 3	);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xc08d45});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x8f6223});
 		var footRight = dog.footRight = new THREE.Mesh(boxGeom, boxMat)
 		footRight.position.set(3,-15.75,4.5);
 		scene.add(footRight);
 
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xc08d45});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x8f6223});
 		var footLeft = dog.footLeft = new THREE.Mesh(boxGeom, boxMat)
 		footLeft.position.set(-3,-15.75,4.5);
 		scene.add(footLeft);
 
 		var boxGeom = new THREE.BoxGeometry(6, 4, 8	);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xc08d45});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x8f6223});
 		var backRight = dog.backRight = new THREE.Mesh(boxGeom, boxMat)
 		backRight.position.set(6,-15.75,-8);
 		scene.add(backRight);
 
 		var boxGeom = new THREE.BoxGeometry(6, 4, 8	);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xc08d45});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x8f6223});
 		var backLeft = dog.backLeft = new THREE.Mesh(boxGeom, boxMat)
 		backLeft.position.set(-6,-15.75,-8);
 		scene.add(backLeft);
@@ -278,7 +278,7 @@ camera.lookAt(scene.position); // or the origin
         scene.add(room);
     }
 
-	
+
 	// 	var boxGeom = new THREE.BoxGeometry(5, 5.5, 5.5);
 	// 	var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE});
 	// 	buttonOne = new THREE.Mesh(boxGeom, boxMat)
@@ -302,7 +302,7 @@ camera.lookAt(scene.position); // or the origin
 	// 	buttonFour = new THREE.Mesh(boxGeom, boxMat)
 	// 	buttonFour.position.set(30,-10,20);
 	// 	scene.add(buttonFour);
-	
+
 	// var domEvents = new Threex.DomEvents(camera, renderer.domElement)
 	// domEvents.addEventListener(buttonFour, 'click', event =>{
 	// 	console.log("hihihi")
