@@ -14,7 +14,7 @@
 	    <div class="title">P . U . P</div>
 		<div>Personal Uplifting Pal</div>
 	</div>
-	<button id="buttonThatMakesStuffHappen">Click me</button>
+	<button id="brownDog">brown</button>
 	<button id="goldButton">gold</button>
 <script src="node_modules/leapjs/leap-0.6.4.min.js"></script>
 <script src="lib/frame.js"></script>
@@ -59,22 +59,22 @@ camera.lookAt(scene.position); // or the origin
 	var room; var btn;
 
 	// array earsTail,headBody,bellyFeet
-	var schemeOne = [0xCD2AD77, 0x56544E, 0xF4F1E6];
-	var schemeTwo = [0xCD2AD77, 0xCD2AD77, 0xCD2AD77];
-	var schemeThree = [0xCD2AD77, 0xCD2AD77, 0xCD2AD77];
+	var schemeOne = [0xae7b34, 0xf6d19d, 0xc08d45];
+	var schemeTwo = [0xc08d45, 0xc08d45, 0xc08d45];
+	var schemeThree = [0xc08d45, 0xc08d45, 0xc08d45];
 	makeDog(schemeOne);
 
 
-	$("#buttonThatMakesStuffHappen").click(function(e){
-		dog.earone.material.color.setHex('0x56544E');
-		dog.material.color.setHex('0xF4F1E6');
-		dog.body.material.color.setHex('0x56544E');
-		dog.tail.material.color.setHex('0x56544E');
-		dog.belly.material.color.setHex('0x56544E');
-		dog.footLeft.material.color.setHex('0x56544E');
-		dog.footRight.material.color.setHex('0x56544E');
-		dog.backLeft.material.color.setHex('0x56544E');
-		dog.backRight.material.color.setHex('0x56544E');
+	$("#brownDog").click(function(e){
+		dog.earone.material.color.setHex('0xae7b34');
+		dog.material.color.setHex('0xf6d19d');
+		dog.body.material.color.setHex('0xdcb275');
+		dog.tail.material.color.setHex('0xae7b34');
+		dog.belly.material.color.setHex('0xfbd8a8');
+		dog.footLeft.material.color.setHex('0xc08d45');
+		dog.footRight.material.color.setHex('0xc08d45');
+		dog.backLeft.material.color.setHex('0xc08d45');
+		dog.backRight.material.color.setHex('0xc08d45');
 	});
 
 
@@ -98,7 +98,7 @@ camera.lookAt(scene.position); // or the origin
 
 	function makeDog(colorArray) {
 		var boxGeom = new THREE.BoxGeometry(11, 11, 11);
-		var boxMat = new THREE.MeshPhongMaterial({color: colorArray[1]});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0xf6d19d});
 		dog = new THREE.Mesh(boxGeom, boxMat);
 		scene.add(dog);
 
@@ -128,7 +128,7 @@ camera.lookAt(scene.position); // or the origin
 
 		//ears
 		var ear = new THREE.BoxGeometry(6,8,2);
-		var boxMatt = new THREE.MeshPhongMaterial({color: colorArray[0]});
+		var boxMatt = new THREE.MeshPhongMaterial({color: 0xae7b34});
 		dog.earone = earone = new THREE.Mesh(ear, boxMatt);
 		earone.position.set(9,9,-5);
 		earone.rotation.z=15;
@@ -190,45 +190,45 @@ camera.lookAt(scene.position); // or the origin
 
 		//body
 		var boxGeomTwo = new THREE.BoxGeometry(12,12,19);
-		var boxMat = new THREE.MeshPhongMaterial({color: colorArray[1]});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0xdcb275});
 		var body = dog.body = new THREE.Mesh(boxGeomTwo, boxMat);
 		body.position.set(0,-12,-7);
 		scene.add(body)
 
 		//belly
 		var bellyGeom = new THREE.BoxGeometry(9,10,4);
-		var bellyColor = new THREE.MeshPhongMaterial({color: colorArray[2]});
+		var bellyColor = new THREE.MeshPhongMaterial({color: 0xfbd8a8});
 		var belly = dog.belly = new THREE.Mesh(bellyGeom,bellyColor);
 		scene.add(belly);
 		belly.position.set(0,-13,1.09)
 
 		//feets
 		var boxGeom = new THREE.BoxGeometry(4, 4, 3	);
-		var boxMat = new THREE.MeshPhongMaterial({color: colorArray[2]});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0xc08d45});
 		var footRight = dog.footRight = new THREE.Mesh(boxGeom, boxMat)
 		footRight.position.set(3,-15.75,4.5);
 		scene.add(footRight);
 
-		var boxMat = new THREE.MeshPhongMaterial({color: colorArray[2]});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0xc08d45});
 		var footLeft = dog.footLeft = new THREE.Mesh(boxGeom, boxMat)
 		footLeft.position.set(-3,-15.75,4.5);
 		scene.add(footLeft);
 
 		var boxGeom = new THREE.BoxGeometry(6, 4, 8	);
-		var boxMat = new THREE.MeshPhongMaterial({color: colorArray[2]});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0xc08d45});
 		var backRight = dog.backRight = new THREE.Mesh(boxGeom, boxMat)
 		backRight.position.set(6,-15.75,-8);
 		scene.add(backRight);
 
 		var boxGeom = new THREE.BoxGeometry(6, 4, 8	);
-		var boxMat = new THREE.MeshPhongMaterial({color: colorArray[2]});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0xc08d45});
 		var backLeft = dog.backLeft = new THREE.Mesh(boxGeom, boxMat)
 		backLeft.position.set(-6,-15.75,-8);
 		scene.add(backLeft);
 
 		//tail
 		var boxTail = new THREE.BoxGeometry(3,10,2)
-		var boxMat = new THREE.MeshPhongMaterial({color: colorArray[0]});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0xae7b34});
 		var tail = dog.tail = new THREE.Mesh(boxTail, boxMat);
 		tail.position.set(0,-6,-21.5)
 		tail.rotation.x=2
