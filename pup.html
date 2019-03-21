@@ -23,8 +23,8 @@
 
 	<button id="happy">happy</button>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="node_modules/leapjs/leap-0.6.4.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
+<script src="lib/leap-0.6.4.min.js"></script>
 <script src="js/orbitControls.js"></script>
 
 <script>
@@ -119,9 +119,9 @@ camera.lookAt(scene.position); // or the origin
 
 	// 1. Make arrays of sayings
 	var happySayings = [
-  "You’re here! I missed you so much!!! I’m so excited to see you!",
-  "I love you, hooman!",
-  "Happiness is a warm puppy",
+	"You’re here! I missed you so much!!! I’m so excited to see you!",
+	"I love you, hooman!",
+	"Happiness is a warm puppy",
 	"Never trust a human who doesn’t love dogs!",
 	"How to have a good day: Wake up, Pet me, Done!",
 	"Anyone who doesn’t know what soap tastes like has never tried to wash me",
@@ -145,7 +145,9 @@ camera.lookAt(scene.position); // or the origin
 	];
 
 	// 2. Display saying on click
-	dog.belly.callback = function() { console.log( happySayings ); }
+	dog.belly.callback = function() {
+		console.log( happySayings );
+	}
 	var raycaster = new THREE.Raycaster();
 	var mouse = new THREE.Vector2();
 	function onDocumentMouseDown( event ) {
@@ -355,7 +357,9 @@ camera.lookAt(scene.position); // or the origin
 	// 	console.log("hihihi")
 	// },false)
 
-
+	Leap.loop(function(frame){
+		console.log(frame.hands.length);
+	});
 
 	// LIGHT
     var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
