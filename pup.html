@@ -20,12 +20,10 @@
 
 	<button id="brownDog">brown</button>
 	<button id="goldButton">gold</button>
+
+	<button id="happy">happy</button>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="node_modules/leapjs/leap-0.6.4.min.js"></script>
-<script src="lib/frame.js"></script>
-<script
-  src="http://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
 <script src="js/orbitControls.js"></script>
 <script src="js/orbitControls.js"></script>
@@ -70,9 +68,9 @@ camera.lookAt(scene.position); // or the origin
 	var room; var btn;
 
 	// array earsTail,headBody,bellyFeet
-	var schemeOne = [0x8f6223, 0xf6d19d, 0xc08d45];
-	var schemeTwo = [0xc08d45, 0xc08d45, 0xc08d45];
-	var schemeThree = [0xc08d45, 0xc08d45, 0xc08d45];
+	var schemeOne = [0x8f6223, 0xf6d19d, 0x8f6223];
+	var schemeTwo = [0x8f6223, 0x8f6223, 0x8f6223];
+	var schemeThree = [0x8f6223, 0x8f6223, 0x8f6223];
 	makeDog(schemeOne);
 
 
@@ -112,8 +110,6 @@ camera.lookAt(scene.position); // or the origin
 		dog.backRight.material.color.setHex('0xF7FFFE');
 	});
 
-
-
 	///gold dog
 
 	$("#goldButton").click(function(e){
@@ -128,12 +124,63 @@ camera.lookAt(scene.position); // or the origin
 		dog.backRight.material.color.setHex('0xd5b759');
 	});
 
+	// 1. Make arrays of sayings
+	var happySayings = [
+  "You’re here! I missed you so much!!! I’m so excited to see you!",
+  "I love you, hooman!",
+  "Happiness is a warm puppy",
+	"Never trust a human who doesn’t love dogs!",
+	"How to have a good day: Wake up, Pet me, Done!",
+	"Anyone who doesn’t know what soap tastes like has never tried to wash me",
+	"I DO want to go outside! How did you know?",
+	"Why do humans harvest my poop?",
+	"I don’t want the ball. But when you ask me “who wants the ball?” I then realize that I want the ball.",
+	"It’s all grey to me!",
+	"Why worry when you can just pet me?",
+	"SQUIRREL? WHERE???",
+	"Everyone stay calm!",
+	"There was a squirrel, I saw it, you gotta believe me!",
+	"Why can’t I pee in the house if you can?",
+	"You are not the boss of me! Oh wait, yes you are.",
+	"If you want the stick back, why do you keep throwing it away?",
+	"Hello there!",
+	"Pets please!",
+	"I’m a heckin’ good boy and so are you!",
+	"On a scale of 1 to 10, you are a 12",
+	"If you do not pet me RIGHT NOW I swear I WILL DIE!",
+	"Where are you going? Take me with you!"
+	];
+
+	// 2. Display saying on click
+	dog.belly.callback = function() { console.log( happySayings ); }
+	var raycaster = new THREE.Raycaster();
+	var mouse = new THREE.Vector2();
+	function onDocumentMouseDown( event ) {
+		console.log('hi');
+	    event.preventDefault();
+
+	    mouse.x = ( event.clientX / renderer.domElement.clientWidth ) * 2 - 1;
+	    mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
+
+	    raycaster.setFromCamera( mouse, camera );
+		meshObjects = [dog.belly];
+	    var intersects = raycaster.intersectObjects( meshObjects );
+
+	    if ( intersects.length > 0 ) {
+	        intersects[0].object.callback();
+	    }
+	}
+	document.addEventListener('mousedown', onDocumentMouseDown, false);
+
+	// 3. Set state for the display saying function
+	// 4. Show different aray depending on state
+
 	makeRoom();
 	// makeButton();
 
 	function makeDog(colorArray) {
 		var boxGeom = new THREE.BoxGeometry(11, 11, 11);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xf6d19d});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0xdcb275});
 		dog = new THREE.Mesh(boxGeom, boxMat);
 		scene.add(dog);
 
@@ -225,7 +272,7 @@ camera.lookAt(scene.position); // or the origin
 
 		//body
 		var boxGeomTwo = new THREE.BoxGeometry(12,12,19);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xdcb275});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0xcea467});
 		var body = dog.body = new THREE.Mesh(boxGeomTwo, boxMat);
 		body.position.set(0,-12,-7);
 		scene.add(body)
@@ -239,24 +286,24 @@ camera.lookAt(scene.position); // or the origin
 
 		//feets
 		var boxGeom = new THREE.BoxGeometry(4, 4, 3	);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xc08d45});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x8f6223});
 		var footRight = dog.footRight = new THREE.Mesh(boxGeom, boxMat)
 		footRight.position.set(3,-15.75,4.5);
 		scene.add(footRight);
 
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xc08d45});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x8f6223});
 		var footLeft = dog.footLeft = new THREE.Mesh(boxGeom, boxMat)
 		footLeft.position.set(-3,-15.75,4.5);
 		scene.add(footLeft);
 
 		var boxGeom = new THREE.BoxGeometry(6, 4, 8	);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xc08d45});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x8f6223});
 		var backRight = dog.backRight = new THREE.Mesh(boxGeom, boxMat)
 		backRight.position.set(6,-15.75,-8);
 		scene.add(backRight);
 
 		var boxGeom = new THREE.BoxGeometry(6, 4, 8	);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xc08d45});
+		var boxMat = new THREE.MeshPhongMaterial({color: 0x8f6223});
 		var backLeft = dog.backLeft = new THREE.Mesh(boxGeom, boxMat)
 		backLeft.position.set(-6,-15.75,-8);
 		scene.add(backLeft);
@@ -285,7 +332,7 @@ camera.lookAt(scene.position); // or the origin
         scene.add(room);
     }
 
-	
+
 	// 	var boxGeom = new THREE.BoxGeometry(5, 5.5, 5.5);
 	// 	var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE});
 	// 	buttonOne = new THREE.Mesh(boxGeom, boxMat)
@@ -309,7 +356,7 @@ camera.lookAt(scene.position); // or the origin
 	// 	buttonFour = new THREE.Mesh(boxGeom, boxMat)
 	// 	buttonFour.position.set(30,-10,20);
 	// 	scene.add(buttonFour);
-	
+
 	// var domEvents = new Threex.DomEvents(camera, renderer.domElement)
 	// domEvents.addEventListener(buttonFour, 'click', event =>{
 	// 	console.log("hihihi")
