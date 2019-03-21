@@ -22,12 +22,8 @@
 	<button id="goldButton">gold</button>
 
 	<button id="happy">happy</button>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="node_modules/leapjs/leap-0.6.4.min.js"></script>
-<script src="lib/frame.js"></script>
-<script
-  src="http://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
 <script src="js/orbitControls.js"></script>
 
@@ -149,10 +145,25 @@ camera.lookAt(scene.position); // or the origin
 	];
 
 	// 2. Display saying on click
-	dog.belly.addEventListener ('mousedown', function(){
-		console.log(happySayings)
-	},false);
-		console.log(dog.belly);
+	dog.belly.callback = function() { console.log( happySayings ); }
+	var raycaster = new THREE.Raycaster();
+	var mouse = new THREE.Vector2();
+	function onDocumentMouseDown( event ) {
+		console.log('hi');
+	    event.preventDefault();
+
+	    mouse.x = ( event.clientX / renderer.domElement.clientWidth ) * 2 - 1;
+	    mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
+
+	    raycaster.setFromCamera( mouse, camera );
+		meshObjects = [dog.belly];
+	    var intersects = raycaster.intersectObjects( meshObjects );
+
+	    if ( intersects.length > 0 ) {
+	        intersects[0].object.callback();
+	    }
+	}
+	document.addEventListener('mousedown', onDocumentMouseDown, false);
 
 	// 3. Set state for the display saying function
 	// 4. Show different aray depending on state
