@@ -267,7 +267,7 @@ var comfortingSayings = [
 		scene.add(dog);
 
 		//eyes
-		var leftEyeGeom = new THREE.BoxGeometry(2, 5.5, 5.5);
+		var boxGeom = new THREE.BoxGeometry(2, 5.5, 5.5);
 		var boxMat = new THREE.MeshPhongMaterial({color: 0xFFFFFF});
 		eye = new THREE.Mesh(boxGeom, boxMat)
 		eye.position.set(6,2,2);
@@ -292,15 +292,12 @@ var comfortingSayings = [
 
 		//ears
 		var ear = new THREE.BoxGeometry(6,8,2);
-		ear.applyMatrix( new THREE.Matrix4().makeTranslation( 0, -4, -1 ) );
 		var boxMatt = new THREE.MeshPhongMaterial({color: 0x8f6223});
 		dog.earone = earone = new THREE.Mesh(ear, boxMatt);
-		earone.position.set(7,7,-5);
+		earone.position.set(9,9,-5);
 		earone.rotation.z=15;
 		scene.add(earone)
 		var eartwo = earone.clone();
-		// console.log(eartwo);
-		// eartwo.geometry.applyMatrix( new THREE.Matrix4().makeTranslation( 0, 4, 1 ) );
 		eartwo.position.set(-9,9,-5);
 		eartwo.rotation.z=95;
 		scene.add(eartwo)
@@ -401,6 +398,7 @@ var comfortingSayings = [
 		tail.rotation.x=2
 		scene.add(tail)
 	}
+
 
     function makeRoom() {
         var geometry = new THREE.BoxGeometry(170, 150, 150);
