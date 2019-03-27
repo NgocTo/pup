@@ -261,40 +261,37 @@ var comfortingSayings = [
 	// makeButton();
 
 	function makeDog(colorArray) {
-		var boxGeom = new THREE.BoxGeometry(11, 11, 11);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xdcb275});
-		dog = new THREE.Mesh(boxGeom, boxMat);
+		var headGeom = new THREE.BoxGeometry(11, 11, 11);
+		var bodyMat = new THREE.MeshPhongMaterial({color: 0xdcb275});
+		dog = new THREE.Mesh(headGeom, bodyMat);
 		scene.add(dog);
 
 		//eyes
-		var boxGeom = new THREE.BoxGeometry(2, 5.5, 5.5);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xFFFFFF});
-		eye = new THREE.Mesh(boxGeom, boxMat)
+		var eyeGeom = new THREE.BoxGeometry(2, 5.5, 5.5);
+		var eyeMat = new THREE.MeshPhongMaterial({color: 0xFFFFFF});
+		eye = new THREE.Mesh(eyeGeom, eyeMat)
 		eye.position.set(6,2,2);
 		scene.add(eye);
-		var boxGeom = new THREE.BoxGeometry(1, 3, 3);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312});
-		eyeballr = new THREE.Mesh(boxGeom, boxMat)
+		var eyeBallGeom = new THREE.BoxGeometry(1, 3, 3);
+		var blackMat = new THREE.MeshPhongMaterial({color: 0x0C1312});
+		eyeballr = new THREE.Mesh(eyeBallGeom, blackMat)
 		eyeballr.position.set(7,2,2);
 		scene.add(eyeballr);
 
 		//left
-		var boxGeom = new THREE.BoxGeometry(2, 5.5, 5.5);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE});
-		eyel = new THREE.Mesh(boxGeom, boxMat)
+		eyel = new THREE.Mesh(eyeGeom, eyeMat)
 		eyel.position.set(-6,2,2);
 		scene.add(eyel);
-		var boxGeom = new THREE.BoxGeometry(1, 3, 3);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312});
-		eyebl = new THREE.Mesh(boxGeom, boxMat)
+		eyebl = new THREE.Mesh(eyeBallGeom, blackMat)
 		eyebl.position.set(-7,2,2);
 		scene.add(eyebl);
 
 		//ears
-		var ear = new THREE.BoxGeometry(6,8,2);
-		var boxMatt = new THREE.MeshPhongMaterial({color: 0x8f6223});
-		dog.earone = earone = new THREE.Mesh(ear, boxMatt);
-		earone.position.set(9,9,-5);
+		var earGeom = new THREE.BoxGeometry(6,8,2);
+		earGeom.applyMatrix( new THREE.Matrix4().makeTranslation( 0, -4, -1 ) );
+		var earMat = new THREE.MeshPhongMaterial({color: 0x8f6223});
+		dog.earone = earone = new THREE.Mesh(earGeom, earMat);
+		earone.position.set(7,7,-5);
 		earone.rotation.z=15;
 		scene.add(earone)
 		var eartwo = earone.clone();
@@ -305,57 +302,44 @@ var comfortingSayings = [
 		//nose
 		var snoutBox = new THREE.BoxGeometry(3,2,3);
 		var line = new THREE.BoxGeometry(0.5,6,0.5)
-		var snoutMatte = new THREE.MeshPhongMaterial({color: 0x0C1312});
-		var snout = new THREE.Mesh(snoutBox,snoutMatte);
+		var snout = new THREE.Mesh(snoutBox,blackMat);
 		scene.add(snout);
 		snout.position.set(0,5.20,6);
-		var linee = new THREE.Mesh(line,snoutMatte)
+		var linee = new THREE.Mesh(line,blackMat)
 		scene.add(linee)
 		linee.position.set(0,2,6)
 
 		//freckles
-		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312});
-		freckle1 = new THREE.Mesh(boxGeom, boxMat)
+		var frecklesGeom = new THREE.BoxGeometry(.5, .5, .5);
+		freckle1 = new THREE.Mesh(frecklesGeom, blackMat)
 		freckle1.position.set(3,3,6);
 		scene.add(freckle1);
-		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312});
-		freckle2 = new THREE.Mesh(boxGeom, boxMat)
+		freckle2 = new THREE.Mesh(frecklesGeom, blackMat)
 		freckle2.position.set(4,1,6);
 		scene.add(freckle2);
-		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312});
-		freckle3 = new THREE.Mesh(boxGeom, boxMat)
+		freckle3 = new THREE.Mesh(frecklesGeom, blackMat)
 		freckle3.position.set(2,1,6);
 		scene.add(freckle3);
-		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312});
-		freckle4 = new THREE.Mesh(boxGeom, boxMat)
+		freckle4 = new THREE.Mesh(frecklesGeom, blackMat)
 		freckle4.position.set(-3,3,6);
 		scene.add(freckle4);
-		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312});
-		freckle5 = new THREE.Mesh(boxGeom, boxMat)
+		freckle5 = new THREE.Mesh(frecklesGeom, blackMat)
 		freckle5.position.set(-4,1,6);
 		scene.add(freckle5);
-		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312});
-		freckle6 = new THREE.Mesh(boxGeom, boxMat)
+		freckle6 = new THREE.Mesh(frecklesGeom, blackMat)
 		freckle6.position.set(-2,1,6);
 		scene.add(freckle6);
 
 		//smile
 		var smileGeom = new THREE.TorusGeometry( 1, 0.35, 6,30, Math.PI );
-		var smile = new THREE.Mesh(smileGeom,snoutMatte)
+		var smile = new THREE.Mesh(smileGeom,blackMat)
 		scene.add(smile)
 		smile.rotation.z=9.45
 		smile.position.set(0,-2,5.8);
 
 		//body
-		var boxGeomTwo = new THREE.BoxGeometry(12,12,19);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xcea467});
-		var body = dog.body = new THREE.Mesh(boxGeomTwo, boxMat);
+		var bodyGeom = new THREE.BoxGeometry(12,12,19);
+		var body = dog.body = new THREE.Mesh(bodyGeom, bodyMat);
 		body.position.set(0,-12,-7);
 		scene.add(body)
 
@@ -367,33 +351,27 @@ var comfortingSayings = [
 		belly.position.set(0,-13,1.09)
 
 		//feets
-		var boxGeom = new THREE.BoxGeometry(4, 4, 3	);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x8f6223});
-		var footRight = dog.footRight = new THREE.Mesh(boxGeom, boxMat)
+		var footFrontGeom = new THREE.BoxGeometry(4, 4, 3);
+		var footRight = dog.footRight = new THREE.Mesh(footFrontGeom, earMat)
 		footRight.position.set(3,-15.75,4.5);
 		scene.add(footRight);
 
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x8f6223});
-		var footLeft = dog.footLeft = new THREE.Mesh(boxGeom, boxMat)
+		var footLeft = dog.footLeft = new THREE.Mesh(footFrontGeom, earMat)
 		footLeft.position.set(-3,-15.75,4.5);
 		scene.add(footLeft);
 
-		var boxGeom = new THREE.BoxGeometry(6, 4, 8	);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x8f6223});
-		var backRight = dog.backRight = new THREE.Mesh(boxGeom, boxMat)
+		var footBackGeom = new THREE.BoxGeometry(6, 4, 8);
+		var backRight = dog.backRight = new THREE.Mesh(footBackGeom, earMat)
 		backRight.position.set(6,-15.75,-8);
 		scene.add(backRight);
 
-		var boxGeom = new THREE.BoxGeometry(6, 4, 8	);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x8f6223});
-		var backLeft = dog.backLeft = new THREE.Mesh(boxGeom, boxMat)
+		var backLeft = dog.backLeft = new THREE.Mesh(footBackGeom, earMat)
 		backLeft.position.set(-6,-15.75,-8);
 		scene.add(backLeft);
 
 		//tail
 		var boxTail = new THREE.BoxGeometry(3,10,2)
-		var boxMat = new THREE.MeshPhongMaterial({color: 0x8f6223});
-		var tail = dog.tail = new THREE.Mesh(boxTail, boxMat);
+		var tail = dog.tail = new THREE.Mesh(boxTail, earMat);
 		tail.position.set(0,-6,-21.5)
 		tail.rotation.x=2
 		scene.add(tail)
