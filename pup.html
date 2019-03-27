@@ -14,29 +14,24 @@
 	    <div class="title">P . U . P</div>
 		<div>Personal Uplifting Pal</div>
 	</div>
-
-
-<!-- dog color buttons  -->
+	<button id="buttonThatMakesStuffHappen">Click me</button>
 	<button id="blackdog">Black</button>
 	<button id="whitedog">White</button>
+
 	<button id="brownDog">Brown</button>
 	<button id="goldButton">Gold</button>
-<!-- dog color buttons  -->
 
-<!-- personality buttons  -->
-	<button id="happy">happy</button>
-	<button id="grumpy">grumpy</button>
-	<button id="wise">wise</button>
-	<button id="comforting">comforting</button>
-<!-- personality buttons  -->
+	<button id="happy">Happy</button>
+	<button id="grumpy">Grumpy</button>
+	<button id="wise">Wise</button>
+	<button id="comforting">Comforting</button>
 
-<!-- show sayings -->
 	<div id="quoteDisplay">
-
+		</div>
 	</div>
-
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
 <script src="js/orbitControls.js"></script>
 
 <script>
@@ -72,14 +67,11 @@ camera.lookAt(scene.position); // or the origin
 	var dog;
 	var room; var btn;
 
-
-
 	// array earsTail,headBody,bellyFeet
 	var schemeOne = [0x8f6223, 0xf6d19d, 0x8f6223];
 	var schemeTwo = [0x8f6223, 0x8f6223, 0x8f6223];
 	var schemeThree = [0x8f6223, 0x8f6223, 0x8f6223];
 	makeDog(schemeOne);
-
 
 
 	$("#brownDog").click(function(e){
@@ -132,26 +124,6 @@ camera.lookAt(scene.position); // or the origin
 		dog.footRight.material.color.setHex('0xd5b759');
 		dog.backLeft.material.color.setHex('0xd5b759');
 		dog.backRight.material.color.setHex('0xd5b759');
-	});
-
-	// Setting Mood Variable for Dog
-
-	var dogMood;
-
-	$("#happy").click(function(e){
-		dogMood = "happy";
-	});
-
-	$("#grumpy").click(function(e){
-		dogMood = "grumpy";
-	});
-
-	$("#wise").click(function(e){
-		dogMood = "wise";
-	});
-
-	$("#comforting").click(function(e){
-		dogMood = "comforting";
 	});
 
 	// 1. Make arrays of sayings
@@ -240,22 +212,8 @@ var comfortingSayings = [
 
 	// 2. Display saying on click
 	dog.belly.callback = function newQuote() {
-
-		if (dogMood == "happy") {
-			var randomNumber = Math.floor(Math.random() * (happySayings.length));
-			document.getElementById('quoteDisplay').innerHTML = happySayings[randomNumber];
-
-		} else if (dogMood == "grumpy") {
-			var randomNumber = Math.floor(Math.random() * (grumpySayings.length));
-			document.getElementById('quoteDisplay').innerHTML = grumpySayings[randomNumber];
-		} else if (dogMood == "wise") {
-			var randomNumber = Math.floor(Math.random() * (wiseSayings.length));
-			document.getElementById('quoteDisplay').innerHTML = wiseSayings[randomNumber];
-		}
-		else if (dogMood == "comforting") {
-			var randomNumber = Math.floor(Math.random() * (comfortingSayings.length));
-			document.getElementById('quoteDisplay').innerHTML = comfortingSayings[randomNumber];
-		}
+		var randomNumber = Math.floor(Math.random() * (happySayings.length));
+		document.getElementById('quoteDisplay').innerHTML = happySayings[randomNumber];
 	}
 
 
@@ -309,7 +267,7 @@ var comfortingSayings = [
 		scene.add(dog);
 
 		//eyes
-		var boxGeom = new THREE.BoxGeometry(2, 5.5, 5.5);
+		var leftEyeGeom = new THREE.BoxGeometry(2, 5.5, 5.5);
 		var boxMat = new THREE.MeshPhongMaterial({color: 0xFFFFFF});
 		eye = new THREE.Mesh(boxGeom, boxMat)
 		eye.position.set(6,2,2);
@@ -498,32 +456,44 @@ var comfortingSayings = [
 	// CONTROLS
 	var controls = new THREE.OrbitControls(camera, renderer.domElement);
 
+	// TWEEN
+	var rotation = { z : 15 };
+	var target = { z : 16 };
+	var tweenHead = new TWEEN.Tween(rotation)
+		.to({z:16}, 1000)
+		.delay(50)
+		.easing(TWEEN.Easing.Sinusoidal.InOut)
+		.onUpdate(function(){
+	    	dog.earone.rotation.z = rotation.z;
+		});
+	var tweenBack = new TWEEN.Tween(rotation)
+		.to({z:14}, 1000)
+		.delay(50)
+		.easing(TWEEN.Easing.Sinusoidal.InOut)
+		.onUpdate(function(){
+	    	dog.earone.rotation.z = rotation.z;
+		});
+
+	// after tweenHead, do tweenBack
+	tweenHead.chain(tweenBack);
+	// And after tweenBack, do tweenHead, so it is cycling
+	tweenBack.chain(tweenHead);
+	tweenHead.start();
 	// ANIMATION
 	function render() {
 		// animate mesh or camera (or lights)
 
+		var dir2 = 1 ;
 
-		dog.earone.rotation.z +=.01
-
-
-		console.log(dog.earone.rotation.z)
-		// if(dog.earone.rotation.z==115)
-		// {console.log("working")}
-		// else{
-		// 	console.log("454545")
-		// }
-
-		// var dir2 = 1 ;
-
+		// dog.earone.rotation.z +=.05
 		// dog.earone.rotation.z-=0.01*dir2;
-
-		// if(dog.earone.rotation.z<-3){
+		//
+		// if(dog.earone.rotation.z<-0.15){
 		// 	dir2 = dir2*-1;
-		// 	console.log("working")
 		// }
-		// // if(dog.earone.rotation.z>0.15){
-		// // 	dir2 = dir2*-1;
-		// // }
+		// if(dog.earone.rotation.z>0.15){
+		// 	dir2 = dir2*-1;
+		// }
 
 
 
@@ -540,6 +510,7 @@ var comfortingSayings = [
 
 
 		requestAnimationFrame(render);
+    	TWEEN.update();
 		renderer.render(scene, camera);
 	}
 	render();
