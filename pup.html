@@ -429,6 +429,33 @@ var comfortingSayings = [
 	// ANIMATION
 	function render() {
 		// animate mesh or camera (or lights)
+
+		var dir2 = 1 ;
+
+		// dog.earone.rotation.z +=.05
+		dog.earone.rotation.z-=0.01*dir2;
+
+		if(dog.earone.rotation.z<-0.15){
+			dir2 = dir2*-1;
+		}
+		if(dog.earone.rotation.z>0.15){
+			dir2 = dir2*-1;
+		}
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
 		requestAnimationFrame(render);
 		renderer.render(scene, camera);
 	}
