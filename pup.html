@@ -275,8 +275,8 @@ var comfortingSayings = [
 		//nose
 		var snoutBox = new THREE.BoxGeometry(3,2,3);
 		var line = new THREE.BoxGeometry(0.5,6,0.5)
-		var brown = new THREE.MeshPhongMaterial({color: 0x0C1312});
-		var snout = new THREE.Mesh(snoutBox,brown);
+		var snoutMatte = new THREE.MeshPhongMaterial({color: 0x0C1312});
+		var snout = new THREE.Mesh(snoutBox,snoutMatte);
 		scene.add(snout);
 		snout.position.set(0,5.20,6);
 		var linee = new THREE.Mesh(line,snoutMatte)
@@ -286,7 +286,7 @@ var comfortingSayings = [
 		//freckles
 		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
 		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312});
-		freckle1 = new THREE.Mesh(boxGeom, brown)
+		freckle1 = new THREE.Mesh(boxGeom, boxMat)
 		freckle1.position.set(3,3,6);
 		scene.add(freckle1);
 		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
