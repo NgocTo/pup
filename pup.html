@@ -17,11 +17,10 @@
 
 
 <!-- dog color buttons  -->
-	<button id="buttonThatMakesStuffHappen">Click me</button>
-	<button id="blackdog">Click me</button>
-	<button id="whitedog">Click me</button>
-	<button id="brownDog">brown</button>
-	<button id="goldButton">gold</button>
+	<button id="blackdog">Black</button>
+	<button id="whitedog">White</button>
+	<button id="brownDog">Brown</button>
+	<button id="goldButton">Gold</button>
 <!-- dog color buttons  -->
 
 <!-- personality buttons  -->
@@ -33,7 +32,7 @@
 
 <!-- show sayings -->
 	<div id="quoteDisplay">
-		
+
 	</div>
 
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -332,9 +331,6 @@ var comfortingSayings = [
 		eyebl = new THREE.Mesh(boxGeom, boxMat)
 		eyebl.position.set(-7,2,2);
 		scene.add(eyebl);
-		var boxMat = new THREE.MeshPhongMaterial({color: 0xc2f442});
-		dog = new THREE.Mesh(boxGeom, boxMat);
-		scene.add(dog);
 
 		//ears
 		var ear = new THREE.BoxGeometry(6,8,2);
