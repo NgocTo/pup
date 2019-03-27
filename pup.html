@@ -492,6 +492,44 @@ var comfortingSayings = [
 	// ANIMATION
 	function render() {
 		// animate mesh or camera (or lights)
+
+
+		dog.earone.rotation.z +=.01
+	
+		
+		console.log(dog.earone.rotation.z)
+		// if(dog.earone.rotation.z==115)
+		// {console.log("working")}
+		// else{
+		// 	console.log("454545")
+		// }
+
+		// var dir2 = 1 ;
+
+		// dog.earone.rotation.z-=0.01*dir2;
+
+		// if(dog.earone.rotation.z<-3){
+		// 	dir2 = dir2*-1;
+		// 	console.log("working")
+		// }
+		// // if(dog.earone.rotation.z>0.15){
+		// // 	dir2 = dir2*-1;
+		// // }
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
 		requestAnimationFrame(render);
 		renderer.render(scene, camera);
 	}
