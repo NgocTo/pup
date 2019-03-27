@@ -15,16 +15,20 @@
 		<div>Personal Uplifting Pal</div>
 	</div>
 	<button id="buttonThatMakesStuffHappen">Click me</button>
-	<button id="blackdog">Click me</button>
-	<button id="whitedog">Click me</button>
+	<button id="blackdog">Black</button>
+	<button id="whitedog">White</button>
 
-	<button id="brownDog">brown</button>
-	<button id="goldButton">gold</button>
+	<button id="brownDog">Brown</button>
+	<button id="goldButton">Gold</button>
 
-	<button id="happy">happy</button>
-	<button id="grumpy">grumpy</button>
-	<button id="wise">wise</button>
-	<button id="comforting">comforting</button>
+	<button id="happy">Happy</button>
+	<button id="grumpy">Grumpy</button>
+	<button id="wise">Wise</button>
+	<button id="comforting">Comforting</button>
+
+	<div id="quoteDisplay">
+		</div>div>
+	</div>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
 <script src="js/orbitControls.js"></script>
@@ -195,14 +199,25 @@ var comfortingSayings = [
 ]
 
 	// 2. Display saying on click
-	dog.belly.callback = function() {
-		console.log( happySayings );
+	dog.belly.callback = function newQuote() {
+		var randomNumber = Math.floor(Math.random() * (happySayings.length));
+		document.getElementById('quoteDisplay').innerHTML = happySayings[randomNumber];
 	}
 
 
-	dog.belly.callback = function() {
-		console.log( grumpySayings );
-	}
+	// dog.belly.callback = function() {
+	// 	console.log( grumpySayings );
+	// }
+
+
+	// dog.belly.callback = function() {
+	// 	console.log( wiseSayings );
+	// }
+
+
+	// dog.belly.callback = function() {
+	// 	console.log( comfortingSayings );
+	// }
 
 
 	var raycaster = new THREE.Raycaster();
