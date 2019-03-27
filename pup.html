@@ -125,6 +125,26 @@ camera.lookAt(scene.position); // or the origin
 		dog.backRight.material.color.setHex('0xd5b759');
 	});
 
+	// Setting Mood Variable for Dog
+
+	var dogMood;
+
+	$("#happy").click(function(e){
+		dogMood = "happy";
+	});
+
+	$("#grumpy").click(function(e){
+		dogMood = "grumpy";
+	});
+
+	$("#wise").click(function(e){
+		dogMood = "wise";
+	});
+
+	$("#comforting").click(function(e){
+		dogMood = "comforting";
+	});
+
 	// 1. Make arrays of sayings
 	var happySayings = [
 	"You’re here! I missed you so much!!! I’m so excited to see you!",
@@ -211,8 +231,22 @@ var comfortingSayings = [
 
 	// 2. Display saying on click
 	dog.belly.callback = function newQuote() {
-		var randomNumber = Math.floor(Math.random() * (happySayings.length));
-		document.getElementById('quoteDisplay').innerHTML = happySayings[randomNumber];
+		
+		if (dogMood == "happy") {
+			var randomNumber = Math.floor(Math.random() * (happySayings.length));
+			document.getElementById('quoteDisplay').innerHTML = happySayings[randomNumber];
+
+		} else if (dogMood == "grumpy") {
+			var randomNumber = Math.floor(Math.random() * (grumpySayings.length));
+			document.getElementById('quoteDisplay').innerHTML = grumpySayings[randomNumber];
+		} else if (dogMood == "wise") {
+			var randomNumber = Math.floor(Math.random() * (wiseSayings.length));
+			document.getElementById('quoteDisplay').innerHTML = wiseSayings[randomNumber];
+		}
+		else if (dogMood == "comforting") {
+			var randomNumber = Math.floor(Math.random() * (comfortingSayings.length));
+			document.getElementById('quoteDisplay').innerHTML = comfortingSayings[randomNumber];
+		}
 	}
 
 
