@@ -15,16 +15,20 @@
 		<div>Personal Uplifting Pal</div>
 	</div>
 	<button id="buttonThatMakesStuffHappen">Click me</button>
-	<button id="blackdog">Click me</button>
-	<button id="whitedog">Click me</button>
+	<button id="blackdog">Black</button>
+	<button id="whitedog">White</button>
 
-	<button id="brownDog">brown</button>
-	<button id="goldButton">gold</button>
+	<button id="brownDog">Brown</button>
+	<button id="goldButton">Gold</button>
 
-	<button id="happy">happy</button>
-	<button id="grumpy">grumpy</button>
-	<button id="wise">wise</button>
-	<button id="comforting">comforting</button>
+	<button id="happy">Happy</button>
+	<button id="grumpy">Grumpy</button>
+	<button id="wise">Wise</button>
+	<button id="comforting">Comforting</button>
+
+	<div id="quoteDisplay">
+		</div>
+	</div>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
 <script src="js/orbitControls.js"></script>
@@ -191,18 +195,43 @@ var comfortingSayings = [
 	"Did you have a ruff day? You can tell me about it!",
 	"You choose what you become",
 	"You are good enough",
-	"It is okay to set boundaries"
+	"It is okay to set boundaries",
+	"Happiness is within your grasp",
+	"The only person who can defeat you is yourself",
+	"Just take it one day at a time, you will get there",
+	"Pawsitivity is a choice you choose to make",
+	"You deserve love, compassion, and empathy",
+	"There are no failures, just opportunities to grow and learn",
+	"You are not saying “no” to others, you are saying “yes” to yourself",
+	"You can’t change how others treat you, but you can choose how it affects you",
+	"Bow only for treats, not to your fears!",
+	"You are not alone!",
+	"Your feelings are not facts"
 ]
 
 	// 2. Display saying on click
-	dog.belly.callback = function() {
-		console.log( happySayings );
+	dog.belly.callback = function newQuote() {
+		var randomNumber = Math.floor(Math.random() * (happySayings.length));
+		document.getElementById('quoteDisplay').innerHTML = happySayings[randomNumber];
 	}
 
 
-	dog.belly.callback = function() {
-		console.log( grumpySayings );
-	}
+	// dog.belly.callback = function newQuote() {
+	// 	var randomNumber = Math.floor(Math.random() * (grumpySayings.length));
+	// 	document.getElementById('quoteDisplay').innerHTML = grumpySayings[randomNumber];
+	// }
+
+
+	// dog.belly.callback = function newQuote() {
+	// 	var randomNumber = Math.floor(Math.random() * (wiseSayings.length));
+	// 	document.getElementById('quoteDisplay').innerHTML = wiseSayings[randomNumber];
+	// }
+
+
+	// dog.belly.callback = function newQuote() {
+	// 	var randomNumber = Math.floor(Math.random() * (comfortingSayings.length));
+	// 	document.getElementById('quoteDisplay').innerHTML = comfortingSayings[randomNumber];
+	// }
 
 
 	var raycaster = new THREE.Raycaster();
