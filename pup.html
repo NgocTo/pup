@@ -14,16 +14,21 @@
 	    <div class="title">P . U . P</div>
 		<div>Personal Uplifting Pal</div>
 	</div>
+
+
+<!-- dog color buttons  -->
 	<button id="buttonThatMakesStuffHappen">Click me</button>
 	<button id="blackdog">Click me</button>
 	<button id="whitedog">Click me</button>
-
 	<button id="brownDog">brown</button>
 	<button id="goldButton">gold</button>
+<!-- dog color buttons  -->
 
+<!-- personality buttons  -->
 	<button id="happy">happy</button>
 	<button id="grumpy">grumpy</button>
 	<button id="wise">wise</button>
+<!-- personality buttons  -->
 	<button id="comforting">comforting</button>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
@@ -62,11 +67,14 @@ camera.lookAt(scene.position); // or the origin
 	var dog;
 	var room; var btn;
 
+
+
 	// array earsTail,headBody,bellyFeet
 	var schemeOne = [0x8f6223, 0xf6d19d, 0x8f6223];
 	var schemeTwo = [0x8f6223, 0x8f6223, 0x8f6223];
 	var schemeThree = [0x8f6223, 0x8f6223, 0x8f6223];
 	makeDog(schemeOne);
+
 
 
 	$("#brownDog").click(function(e){
