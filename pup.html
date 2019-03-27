@@ -20,23 +20,19 @@
 
 	<button id="brownDog">brown</button>
 	<button id="goldButton">gold</button>
-
-	<button id="happy">happy</button>
-<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="node_modules/leapjs/leap-0.6.4.min.js"></script>
+<script src="lib/frame.js"></script>
+<script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
-<script src="lib/leap-0.6.0.js"></script>
 <script src="js/orbitControls.js"></script>
+
 <script>
 
 	// SCENE
 	var scene = new THREE.Scene();
-
-	const obj={
-		id:'puppy'
-	}
-
-
-
 
 	// CAMERA
 // 	var camera = new THREE.OrthographicCamera( 200 / - 2, 200 / 2, 200 / 2, 200 / - 2, 1, 1000 );
@@ -109,6 +105,8 @@ camera.lookAt(scene.position); // or the origin
 		dog.backRight.material.color.setHex('0xF7FFFE');
 	});
 
+
+
 	///gold dog
 
 	$("#goldButton").click(function(e){
@@ -123,59 +121,6 @@ camera.lookAt(scene.position); // or the origin
 		dog.backRight.material.color.setHex('0xd5b759');
 	});
 
-	// 1. Make arrays of sayings
-	var happySayings = [
-	"You’re here! I missed you so much!!! I’m so excited to see you!",
-	"I love you, hooman!",
-	"Happiness is a warm puppy",
-	"Never trust a human who doesn’t love dogs!",
-	"How to have a good day: Wake up, Pet me, Done!",
-	"Anyone who doesn’t know what soap tastes like has never tried to wash me",
-	"I DO want to go outside! How did you know?",
-	"Why do humans harvest my poop?",
-	"I don’t want the ball. But when you ask me “who wants the ball?” I then realize that I want the ball.",
-	"It’s all grey to me!",
-	"Why worry when you can just pet me?",
-	"SQUIRREL? WHERE???",
-	"Everyone stay calm!",
-	"There was a squirrel, I saw it, you gotta believe me!",
-	"Why can’t I pee in the house if you can?",
-	"You are not the boss of me! Oh wait, yes you are.",
-	"If you want the stick back, why do you keep throwing it away?",
-	"Hello there!",
-	"Pets please!",
-	"I’m a heckin’ good boy and so are you!",
-	"On a scale of 1 to 10, you are a 12",
-	"If you do not pet me RIGHT NOW I swear I WILL DIE!",
-	"Where are you going? Take me with you!"
-	];
-
-	// 2. Display saying on click
-	dog.belly.callback = function() {
-		console.log( happySayings );
-	}
-	var raycaster = new THREE.Raycaster();
-	var mouse = new THREE.Vector2();
-	function onDocumentMouseDown( event ) {
-		console.log('hi');
-	    event.preventDefault();
-
-	    mouse.x = ( event.clientX / renderer.domElement.clientWidth ) * 2 - 1;
-	    mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
-
-	    raycaster.setFromCamera( mouse, camera );
-		meshObjects = [dog.belly];
-	    var intersects = raycaster.intersectObjects( meshObjects );
-
-	    if ( intersects.length > 0 ) {
-	        intersects[0].object.callback();
-	    }
-	}
-	document.addEventListener('mousedown', onDocumentMouseDown, false);
-
-	// 3. Set state for the display saying function
-	// 4. Show different aray depending on state
-
 	makeRoom();
 	// makeButton();
 
@@ -186,7 +131,7 @@ camera.lookAt(scene.position); // or the origin
 		scene.add(dog);
 
 		//eyes
-		var boxGeom = new THREE.BoxGeometry(2, 5.5, 5.5);
+		var leftEyeGeom = new THREE.BoxGeometry(2, 5.5, 5.5);
 		var boxMat = new THREE.MeshPhongMaterial({color: 0xFFFFFF});
 		eye = new THREE.Mesh(boxGeom, boxMat)
 		eye.position.set(6,2,2);
@@ -224,8 +169,8 @@ camera.lookAt(scene.position); // or the origin
 		//nose
 		var snoutBox = new THREE.BoxGeometry(3,2,3);
 		var line = new THREE.BoxGeometry(0.5,6,0.5)
-		var snoutMatte = new THREE.MeshPhongMaterial({color: 0x0C1312});
-		var snout = new THREE.Mesh(snoutBox,snoutMatte);
+		var brown = new THREE.MeshPhongMaterial({color: 0x0C1312});
+		var snout = new THREE.Mesh(snoutBox,brown);
 		scene.add(snout);
 		snout.position.set(0,5.20,6);
 		var linee = new THREE.Mesh(line,snoutMatte)
@@ -235,7 +180,7 @@ camera.lookAt(scene.position); // or the origin
 		//freckles
 		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
 		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312});
-		freckle1 = new THREE.Mesh(boxGeom, boxMat)
+		freckle1 = new THREE.Mesh(boxGeom, brown)
 		freckle1.position.set(3,3,6);
 		scene.add(freckle1);
 		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
@@ -363,9 +308,7 @@ camera.lookAt(scene.position); // or the origin
 	// 	console.log("hihihi")
 	// },false)
 
-	Leap.loop(function(frame){
-		console.log(frame.hands.length);
-	});
+
 
 	// LIGHT
     var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
