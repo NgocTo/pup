@@ -22,6 +22,9 @@
 	<button id="goldButton">gold</button>
 
 	<button id="happy">happy</button>
+	<button id="grumpy">grumpy</button>
+	<button id="wise">wise</button>
+	<button id="comforting">comforting</button>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
 <script src="lib/leap-0.6.0.js"></script>
@@ -150,10 +153,63 @@ camera.lookAt(scene.position); // or the origin
 	"Where are you going? Take me with you!"
 	];
 
+
+var grumpySayings = [
+	"Are you still there? Leave me alone!",
+	"I’m trying to sleep, do you mind?",
+	"You stop that right now!",
+	"You’re really getting on my nerves",
+	"What if I never find out who’s a good boy?",
+	"If you keep pestering me, things are going to get ruff",
+	"Go away!",
+	"Well if you want to pet me, I guess I won’t hate it.",
+	"You’re leaving already? How could you?",
+	"Excuse me, no pictures! How dare you?"
+]
+
+var wiseSayings = [
+	"When life gives you dog treats, you eat em!",
+	"There are no mistakes, only happy accidents",
+	"As wonderful as we can be, we are famous for missing the point",
+	"The greatest pleasure of a dog is that you may make a fool of yourself with them, but not only will they not scold you, they will make a fool of themselves too",
+	"Dogs are how people would be if the important stuff is all that mattered to them",
+	"What counts is not the size of the dog in the fight - it’s the size of fight in the dog",
+	"Scratch a dog and you’ll have found a permanent job",
+	"Every dog has its day, unless he loses his tail, then he has a weak-end",
+	"Any dog can be a lap dog if you try hard enough",
+	"I’ll have you know I’m at least 35 in dog years!",
+	"I just had a nightmare that the mailman was coming for me",
+	"Speaking of the mailman, I hate him",
+	"I don’t always bark at night. But when I do, it’s for absolutely no reason."
+]
+
+var comfortingSayings = [
+	"You’re my favourite person",
+	"I’m always here to lend a paw if you need",
+	"There is no need to be the best, only good and kind",
+	"I’m so happy you’re here",
+	"You are doing your best, and I’m so proud of you!",
+	"You can do it!",
+	"I believe in you",
+	"I’m glad we met!",
+	"You are a good human",
+	"Did you have a ruff day? You can tell me about it!",
+	"You choose what you become",
+	"You are good enough",
+	"It is okay to set boundaries"
+]
+
 	// 2. Display saying on click
 	dog.belly.callback = function() {
 		console.log( happySayings );
 	}
+
+
+	dog.belly.callback = function() {
+		console.log( grumpySayings );
+	}
+
+
 	var raycaster = new THREE.Raycaster();
 	var mouse = new THREE.Vector2();
 	function onDocumentMouseDown( event ) {
