@@ -195,7 +195,18 @@ var comfortingSayings = [
 	"Did you have a ruff day? You can tell me about it!",
 	"You choose what you become",
 	"You are good enough",
-	"It is okay to set boundaries"
+	"It is okay to set boundaries",
+	"Happiness is within your grasp",
+	"The only person who can defeat you is yourself",
+	"Just take it one day at a time, you will get there",
+	"Pawsitivity is a choice you choose to make",
+	"You deserve love, compassion, and empathy",
+	"There are no failures, just opportunities to grow and learn",
+	"You are not saying “no” to others, you are saying “yes” to yourself",
+	"You can’t change how others treat you, but you can choose how it affects you",
+	"Bow only for treats, not to your fears!",
+	"You are not alone!",
+	"Your feelings are not facts"
 ]
 
 	// 2. Display saying on click
@@ -290,8 +301,8 @@ var comfortingSayings = [
 		//nose
 		var snoutBox = new THREE.BoxGeometry(3,2,3);
 		var line = new THREE.BoxGeometry(0.5,6,0.5)
-		var brown = new THREE.MeshPhongMaterial({color: 0x0C1312});
-		var snout = new THREE.Mesh(snoutBox,brown);
+		var snoutMatte = new THREE.MeshPhongMaterial({color: 0x0C1312});
+		var snout = new THREE.Mesh(snoutBox,snoutMatte);
 		scene.add(snout);
 		snout.position.set(0,5.20,6);
 		var linee = new THREE.Mesh(line,snoutMatte)
@@ -301,7 +312,7 @@ var comfortingSayings = [
 		//freckles
 		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
 		var boxMat = new THREE.MeshPhongMaterial({color: 0x0C1312});
-		freckle1 = new THREE.Mesh(boxGeom, brown)
+		freckle1 = new THREE.Mesh(boxGeom, boxMat)
 		freckle1.position.set(3,3,6);
 		scene.add(freckle1);
 		var boxGeom = new THREE.BoxGeometry(.5, .5, .5);
