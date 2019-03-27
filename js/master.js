@@ -6,8 +6,22 @@ $(document).ready(function(){
         displayInterface();
     });
 
-
     function displayInterface() {
         $("#overlay").removeClass('hide');
     }
+    $("#black").click(function() {
+        blackDog();
+    })
+
+    $("#white").click(function() {
+        whiteDog();
+    })
+
+    $("#brown").click(function() {
+        brownDog();
+    })
+
+    $("#gold").click(function() {
+        goldDog();
+    })
 });
