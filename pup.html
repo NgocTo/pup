@@ -437,16 +437,15 @@ var comfortingSayings = [
 
 	// TWEEN
 	var rotation = { z : 15 };
-	var target = { z : 16 };
 	var tweenHead = new TWEEN.Tween(rotation)
-		.to({z:16}, 1000)
+		.to({z:15.5}, 1000)
 		.delay(50)
 		.easing(TWEEN.Easing.Sinusoidal.InOut)
 		.onUpdate(function(){
 	    	dog.earone.rotation.z = rotation.z;
 		});
 	var tweenBack = new TWEEN.Tween(rotation)
-		.to({z:14}, 1000)
+		.to({z:14.5}, 1000)
 		.delay(50)
 		.easing(TWEEN.Easing.Sinusoidal.InOut)
 		.onUpdate(function(){
