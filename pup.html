@@ -206,6 +206,10 @@ var comfortingSayings = [
 	dog.head.callback = function newQuote() {
 		var randomNumber = Math.floor(Math.random() * (happySayings.length));
 		document.getElementById('quoteDisplay').innerHTML = happySayings[randomNumber];
+<<<<<<< HEAD
+
+
+=======
 	// EARS tween
 		rotate(dog.earone, 15, 15.25, 14.80);
 		rotate(dog.eartwo, -15, -15.15, -14.80);
@@ -235,6 +239,7 @@ var comfortingSayings = [
 				tweenBack.stop();
 			}, 1500);
 		}
+>>>>>>> 3da6203530faf116af014497e20e1406e5c05eb0
 	}
 
 
@@ -403,8 +408,10 @@ var comfortingSayings = [
 		//tail
 		var boxTail = new THREE.BoxGeometry(3,10,2)
 		var tail = dog.tail = new THREE.Mesh(boxTail, earMat);
-		tail.position.set(0,-6,-21.5)
-		tail.rotation.x=2
+		boxTail.applyMatrix( new THREE.Matrix4().makeTranslation( 0, -5,0 ) );
+		tail.position.set(0,-9,-18)
+		tail.rotation.x=3
+		tail.rotation.y=-3
 		scene.add(tail)
 	}
 
@@ -436,11 +443,72 @@ var comfortingSayings = [
 	var controls = new THREE.OrbitControls(camera, renderer.domElement);
 
 	// TWEEN
+<<<<<<< HEAD
+
+	rotate(dog.earone, 15, 15.25, 14.40);
+	rotate(dog.eartwo, -15, -15.25, -14.40);
+	rotate(dog.tail, 0, -1, 0.5);
+
+	function rotate (obj, defaultRot, fromRot, toRot) {
+		var rotation = { z : defaultRot };
+		var tweenHead = new TWEEN.Tween(rotation)
+			.to({z:fromRot}, 1000)
+			.delay(50)
+			.easing(TWEEN.Easing.Sinusoidal.InOut)
+			.onUpdate(function(){
+				obj.rotation.z = rotation.z;
+			});
+		var tweenBack = new TWEEN.Tween(rotation)
+			.to({z:toRot}, 1000)
+			.delay(50)
+			.easing(TWEEN.Easing.Sinusoidal.InOut)
+			.onUpdate(function(){
+				obj.rotation.z = rotation.z;
+			});
+
+		// after tweenHead, do tweenBack
+		tweenHead.chain(tweenBack);
+		// And after tweenBack, do tweenHead, so it is cycling
+		tweenBack.chain(tweenHead);
+		tweenHead.start();
+	}
+
+
+
+console.log(dog.tail.rotation.z)
+/////tail rotation function
+
+	// var rotation = { z : 15 };
+	// var tweenHead = new TWEEN.Tween(rotation)
+	// 	.to({z:15.25}, 1000)
+	// 	.delay(50)
+	// 	.easing(TWEEN.Easing.Sinusoidal.InOut)
+	// 	.onUpdate(function(){
+	// 		dog.earone.rotation.z = rotation.z;
+	// 		// dog.eartwo.rotation.z = rotation.z;
+	// 	});
+	// var tweenBack = new TWEEN.Tween(rotation)
+	// 	.to({z:14.70}, 1000)
+	// 	.delay(50)
+	// 	.easing(TWEEN.Easing.Sinusoidal.InOut)
+	// 	.onUpdate(function(){
+	// 		dog.earone.rotation.z = rotation.z;
+	// 		// dog.eartwo.rotation.z = rotation.z;
+	// 	});
+
+	// // after tweenHead, do tweenBack
+	// tweenHead.chain(tweenBack);
+	// // And after tweenBack, do tweenHead, so it is cycling
+	// tweenBack.chain(tweenHead);
+	// tweenHead.start();
+	// ANIMATION
+=======
 	
 
 
 
 
+>>>>>>> 3da6203530faf116af014497e20e1406e5c05eb0
 	function render() {
 		// animate mesh or camera (or lights)
 		requestAnimationFrame(render);
