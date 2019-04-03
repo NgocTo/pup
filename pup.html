@@ -206,10 +206,6 @@ var comfortingSayings = [
 	dog.head.callback = function newQuote() {
 		var randomNumber = Math.floor(Math.random() * (happySayings.length));
 		document.getElementById('quoteDisplay').innerHTML = happySayings[randomNumber];
-<<<<<<< HEAD
-
-
-=======
 	// EARS tween
 		rotate(dog.earone, 15, 15.25, 14.80);
 		rotate(dog.eartwo, -15, -15.15, -14.80);
@@ -239,7 +235,6 @@ var comfortingSayings = [
 				tweenBack.stop();
 			}, 1500);
 		}
->>>>>>> 3da6203530faf116af014497e20e1406e5c05eb0
 	}
 
 
@@ -443,10 +438,8 @@ var comfortingSayings = [
 	var controls = new THREE.OrbitControls(camera, renderer.domElement);
 
 	// TWEEN
-<<<<<<< HEAD
 
-	rotate(dog.earone, 15, 15.25, 14.40);
-	rotate(dog.eartwo, -15, -15.25, -14.40);
+
 	rotate(dog.tail, 0, -1, 0.5);
 
 	function rotate (obj, defaultRot, fromRot, toRot) {
@@ -502,13 +495,6 @@ console.log(dog.tail.rotation.z)
 	// tweenBack.chain(tweenHead);
 	// tweenHead.start();
 	// ANIMATION
-=======
-	
-
-
-
-
->>>>>>> 3da6203530faf116af014497e20e1406e5c05eb0
 	function render() {
 		// animate mesh or camera (or lights)
 		requestAnimationFrame(render);
