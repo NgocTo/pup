@@ -214,6 +214,8 @@ var comfortingSayings = [
 	dog.belly.callback = function newQuote() {
 		var randomNumber = Math.floor(Math.random() * (happySayings.length));
 		document.getElementById('quoteDisplay').innerHTML = happySayings[randomNumber];
+
+
 	}
 
 
@@ -381,8 +383,10 @@ var comfortingSayings = [
 		//tail
 		var boxTail = new THREE.BoxGeometry(3,10,2)
 		var tail = dog.tail = new THREE.Mesh(boxTail, earMat);
-		tail.position.set(0,-6,-21.5)
-		tail.rotation.x=2
+		boxTail.applyMatrix( new THREE.Matrix4().makeTranslation( 0, -5,0 ) );
+		tail.position.set(0,-9,-18)
+		tail.rotation.x=3
+		tail.rotation.y=-3
 		scene.add(tail)
 	}
 
@@ -414,9 +418,10 @@ var comfortingSayings = [
 	var controls = new THREE.OrbitControls(camera, renderer.domElement);
 
 	// TWEEN
-	
+
 	rotate(dog.earone, 15, 15.25, 14.40);
 	rotate(dog.eartwo, -15, -15.25, -14.40);
+	rotate(dog.tail, 0, -1, 0.5);
 
 	function rotate (obj, defaultRot, fromRot, toRot) {
 		var rotation = { z : defaultRot };
@@ -441,6 +446,12 @@ var comfortingSayings = [
 		tweenBack.chain(tweenHead);
 		tweenHead.start();
 	}
+
+
+
+console.log(dog.tail.rotation.z)
+/////tail rotation function
+
 	// var rotation = { z : 15 };
 	// var tweenHead = new TWEEN.Tween(rotation)
 	// 	.to({z:15.25}, 1000)
