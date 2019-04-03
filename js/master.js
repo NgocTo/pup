@@ -9,18 +9,6 @@ $(document).ready(function(){
     function displayInterface() {
         $("#controls").css("width", "100%");
     }
-    $("#black").click(function() {
-        blackDog();
-    })
-    $("#white").click(function() {
-        whiteDog();
-    })
-    $("#brown").click(function() {
-        brownDog();
-    })
-    $("#gold").click(function() {
-        goldDog();
-    })
     $(".color").on("click", function () {
         $(".color").removeClass("selected");
         $(this).addClass("selected");
