@@ -294,10 +294,19 @@ var comfortingSayings = [
 		earone.position.set(7,7,-5);
 		earone.rotation.z=15;
 		scene.add(earone)
-		var eartwo = earone.clone();
-		eartwo.position.set(-9,9,-5);
-		eartwo.rotation.z=95;
+		// ear two
+		var earGeom2 = new THREE.BoxGeometry(6,8,2);
+		earGeom2.applyMatrix( new THREE.Matrix4().makeTranslation( 0, -4, -1 ) );
+		var earMat2 = new THREE.MeshPhongMaterial({color: 0x8f6223});
+		dog.eartwo = eartwo = new THREE.Mesh(earGeom2, earMat2);
+		eartwo.position.set(-7,7,-5);
+		eartwo.rotation.z=-15;
 		scene.add(eartwo)
+
+		// var eartwo = earone.clone();
+		// eartwo.position.set(-9,9,-5);
+		// eartwo.rotation.z=95;
+		// scene.add(eartwo)
 
 		//nose
 		var snoutBox = new THREE.BoxGeometry(3,2,3);
@@ -394,37 +403,6 @@ var comfortingSayings = [
     }
 
 
-	// 	var boxGeom = new THREE.BoxGeometry(5, 5.5, 5.5);
-	// 	var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE});
-	// 	buttonOne = new THREE.Mesh(boxGeom, boxMat)
-	// 	buttonOne.position.set(30,20,20);
-	// 	scene.add(buttonOne);
-
-	// 	var boxGeom = new THREE.BoxGeometry(5, 5.5, 5.5);
-	// 	var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE});
-	// 	buttonTwo = new THREE.Mesh(boxGeom, boxMat)
-	// 	buttonTwo.position.set(30,10,20);
-	// 	scene.add(buttonTwo);
-
-	// 	var boxGeom = new THREE.BoxGeometry(5, 5.5, 5.5);
-	// 	var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE});
-	// 	buttonThree = new THREE.Mesh(boxGeom, boxMat)
-	// 	buttonThree.position.set(30,0,20);
-	// 	scene.add(buttonThree);
-
-	// 	var boxGeom = new THREE.BoxGeometry(5, 5.5, 5.5);
-	// 	var boxMat = new THREE.MeshPhongMaterial({color: 0xF7FFFE});
-	// 	buttonFour = new THREE.Mesh(boxGeom, boxMat)
-	// 	buttonFour.position.set(30,-10,20);
-	// 	scene.add(buttonFour);
-
-	// var domEvents = new Threex.DomEvents(camera, renderer.domElement)
-	// domEvents.addEventListener(buttonFour, 'click', event =>{
-	// 	console.log("hihihi")
-	// },false)
-
-
-
 	// LIGHT
     var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
 	var light = new THREE.AmbientLight(0x404040, 0.1);
@@ -436,57 +414,58 @@ var comfortingSayings = [
 	var controls = new THREE.OrbitControls(camera, renderer.domElement);
 
 	// TWEEN
-	var rotation = { z : 15 };
-	var tweenHead = new TWEEN.Tween(rotation)
-		.to({z:15.5}, 1000)
-		.delay(50)
-		.easing(TWEEN.Easing.Sinusoidal.InOut)
-		.onUpdate(function(){
-	    	dog.earone.rotation.z = rotation.z;
-		});
-	var tweenBack = new TWEEN.Tween(rotation)
-		.to({z:14.5}, 1000)
-		.delay(50)
-		.easing(TWEEN.Easing.Sinusoidal.InOut)
-		.onUpdate(function(){
-	    	dog.earone.rotation.z = rotation.z;
-		});
+	rotate(dog.earone, y, 15, 15.25, 14.40);
+	rotate(dog.eartwo, y, -15, -15.25, -14.40);
 
-	// after tweenHead, do tweenBack
-	tweenHead.chain(tweenBack);
-	// And after tweenBack, do tweenHead, so it is cycling
-	tweenBack.chain(tweenHead);
-	tweenHead.start();
+	function rotate (obj, axis, defaultRot, fromRot, toRot) {
+		var rotation = { axis : defaultRot };
+		var tweenHead = new TWEEN.Tween(rotation)
+			.to({axis:fromRot}, 1000)
+			.delay(50)
+			.easing(TWEEN.Easing.Sinusoidal.InOut)
+			.onUpdate(function(){
+				obj.rotation.axis = rotation.axis;
+			});
+		var tweenBack = new TWEEN.Tween(rotation)
+			.to({z:toRot}, 1000)
+			.delay(50)
+			.easing(TWEEN.Easing.Sinusoidal.InOut)
+			.onUpdate(function(){
+				obj.rotation.axis = rotation.axis;
+			});
+
+		// after tweenHead, do tweenBack
+		tweenHead.chain(tweenBack);
+		// And after tweenBack, do tweenHead, so it is cycling
+		tweenBack.chain(tweenHead);
+		tweenHead.start();
+	}
+	// var rotation = { z : 15 };
+	// var tweenHead = new TWEEN.Tween(rotation)
+	// 	.to({z:15.25}, 1000)
+	// 	.delay(50)
+	// 	.easing(TWEEN.Easing.Sinusoidal.InOut)
+	// 	.onUpdate(function(){
+	// 		dog.earone.rotation.z = rotation.z;
+	// 		// dog.eartwo.rotation.z = rotation.z;
+	// 	});
+	// var tweenBack = new TWEEN.Tween(rotation)
+	// 	.to({z:14.70}, 1000)
+	// 	.delay(50)
+	// 	.easing(TWEEN.Easing.Sinusoidal.InOut)
+	// 	.onUpdate(function(){
+	// 		dog.earone.rotation.z = rotation.z;
+	// 		// dog.eartwo.rotation.z = rotation.z;
+	// 	});
+
+	// // after tweenHead, do tweenBack
+	// tweenHead.chain(tweenBack);
+	// // And after tweenBack, do tweenHead, so it is cycling
+	// tweenBack.chain(tweenHead);
+	// tweenHead.start();
 	// ANIMATION
 	function render() {
 		// animate mesh or camera (or lights)
-
-		var dir2 = 1 ;
-
-		// dog.earone.rotation.z +=.05
-		// dog.earone.rotation.z-=0.01*dir2;
-		//
-		// if(dog.earone.rotation.z<-0.15){
-		// 	dir2 = dir2*-1;
-		// }
-		// if(dog.earone.rotation.z>0.15){
-		// 	dir2 = dir2*-1;
-		// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		requestAnimationFrame(render);
     	TWEEN.update();
 		renderer.render(scene, camera);
