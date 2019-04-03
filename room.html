@@ -11,12 +11,12 @@
 <link rel="stylesheet" href="css/master.css">
 </head>
 <body>
-	<!-- <div id="overlay"></div>
+	<div id="overlay"></div>
 	<div class="center" id="intro">
 	    <div class="title">P . U . P</div>
 		<div class="subtitle">Personal Uplifting Pal</div>
 		<a href="">Begin</a>
-	</div> -->
+	</div>
 	<div class="interface" id="controls">
 		<ul class="color-container">
 			<li class="color" id="black">Black</li>
@@ -24,14 +24,13 @@
 			<li class="color" id="brown">Brown</li>
 			<li class="color" id="gold">Gold</li>
 		</ul>
+		<ul class="mood-container">
+			<li class="mood" id="happy">Happy</li>
+			<li class="mood" id="grumpy">Grumpy</li>
+			<li class="mood" id="wise">Wise</li>
+			<li class="mood" id="uplifting">Uplifting</li>
+		</ul>
 	</div>
-	<button id="buttonThatMakesStuffHappen">Click me</button>
-	<button id="blackdog">Click me</button>
-	<button id="whitedog">Click me</button>
-
-	<button id="brownDog">brown</button>
-	<button id="goldButton">gold</button>
-
 	<button id="happy">happy</button>
 	<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
@@ -45,9 +44,6 @@
 	const obj={
 		id:'puppy'
 	}
-
-
-
 
 	// CAMERA
 // 	var camera = new THREE.OrthographicCamera( 200 / - 2, 200 / 2, 200 / 2, 200 / - 2, 1, 1000 );

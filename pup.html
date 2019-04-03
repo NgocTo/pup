@@ -3,6 +3,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PUP</title>
+<link rel="manifest" href="manifest.json">
 <link href="https://fonts.googleapis.com/css?family=Baloo|Merriweather+Sans" rel="stylesheet">
 <style>
 	body {margin:0px;}
@@ -11,22 +12,26 @@
 <link rel="stylesheet" href="css/master.css">
 </head>
 <body>
-	<div id="intro" class="hide">
+	<div id="overlay"></div>
+	<div class="center" id="intro">
 	    <div class="title">P . U . P</div>
-		<div>Personal Uplifting Pal</div>
+		<div class="subtitle">Personal Uplifting Pal</div>
+		<a href="">Begin</a>
 	</div>
-	<button id="buttonThatMakesStuffHappen">Click me</button>
-	<button id="blackdog">Black</button>
-	<button id="whitedog">White</button>
-
-	<button id="brownDog">Brown</button>
-	<button id="goldButton">Gold</button>
-
-	<button id="happy">Happy</button>
-	<button id="grumpy">Grumpy</button>
-	<button id="wise">Wise</button>
-	<button id="comforting">Comforting</button>
-
+	<div class="interface" id="controls">
+		<ul class="color-container">
+			<li class="color" id="black">Black</li>
+			<li class="color" id="white">White</li>
+			<li class="color" id="brown">Brown</li>
+			<li class="color" id="gold">Gold</li>
+		</ul>
+		<ul class="mood-container">
+			<li class="mood" id="happy">Happy</li>
+			<li class="mood" id="grumpy">Grumpy</li>
+			<li class="mood" id="wise">Wise</li>
+			<li class="mood" id="uplifting">Uplifting</li>
+		</ul>
+	</div>
 	<div id="quoteDisplay">
 		</div>
 	</div>
@@ -64,7 +69,7 @@ camera.lookAt(scene.position); // or the origin
 	makeDog(schemeOne);
 
 
-	$("#brownDog").click(function(e){
+	$("#brown").click(function(e){
 		dog.earone.material.color.setHex('0x8f6223');
 		dog.eartwo.material.color.setHex('0x8f6223');
         dog.material.color.setHex('0xdcb275');
@@ -77,7 +82,7 @@ camera.lookAt(scene.position); // or the origin
         dog.backRight.material.color.setHex('0x8f6223');
     });
 	//button for black dog scheme
-	$("#blackdog").click(function(e){
+	$("#black").click(function(e){
 		dog.earone.material.color.setHex('0x56544E');
 		dog.eartwo.material.color.setHex('0x56544E');
 		dog.material.color.setHex('0x56544E');
@@ -90,7 +95,7 @@ camera.lookAt(scene.position); // or the origin
 		dog.backRight.material.color.setHex('0xF7FFFE');
 	});
 	//button for white dog scheme
-	$("#whitedog").click(function(e){
+	$("#white").click(function(e){
 		dog.earone.material.color.setHex('0xDCDCDC');
 		dog.eartwo.material.color.setHex('0xDCDCDC');
 		dog.material.color.setHex('0xF5F1EC');
@@ -105,7 +110,7 @@ camera.lookAt(scene.position); // or the origin
 
 	///gold dog
 
-	$("#goldButton").click(function(e){
+	$("#gold").click(function(e){
 		dog.earone.material.color.setHex('0xe4c567');
 		dog.eartwo.material.color.setHex('0xe4c567');
 		dog.material.color.setHex('0xf5e2a6');
@@ -175,7 +180,7 @@ var wiseSayings = [
 	"I don’t always bark at night. But when I do, it’s for absolutely no reason."
 ]
 
-var comfortingSayings = [
+var upliftingSayings = [
 	"You’re my favourite person",
 	"I’m always here to lend a paw if you need",
 	"There is no need to be the best, only good and kind",
@@ -204,12 +209,31 @@ var comfortingSayings = [
 
 	// 2. Display saying on click and ears tween
 	dog.head.callback = function newQuote() {
-		var randomNumber = Math.floor(Math.random() * (happySayings.length));
-		document.getElementById('quoteDisplay').innerHTML = happySayings[randomNumber];
-	// EARS tween
-		rotate(dog.earone, 15, 15.25, 14.80);
-		rotate(dog.eartwo, -15, -15.15, -14.80);
-		function rotate(obj, defaultRot, fromRot, toRot) {
+		// if ($('.mood').hasClass('selected')) {
+		// 	var mood = $('.mood').val();
+		// }
+		if ($('#happy').hasClass('selected')) {
+			var randomNumber = Math.floor(Math.random() * (happySayings.length));
+			$('#quoteDisplay').html(happySayings[randomNumber]);
+			rotateEar(dog.earone, 15, 15.25, 14.80);
+			rotateEar(dog.eartwo, -15, -15.15, -14.80);
+		} else if ($('#grumpy').hasClass('selected')) {
+			var randomNumber = Math.floor(Math.random() * (grumpySayings.length));
+			$('#quoteDisplay').html(grumpySayings[randomNumber]);
+			rotateEar(dog.earone, 15, 15.25, 14.80);
+			rotateEar(dog.eartwo, -15, -15.15, -14.80);
+		} else if ($('#wise').hasClass('selected')) {
+			var randomNumber = Math.floor(Math.random() * (wiseSayings.length));
+			$('#quoteDisplay').html(wiseSayings[randomNumber]);
+			rotateEar(dog.earone, 15, 15.25, 14.80);
+			rotateEar(dog.eartwo, -15, -15.15, -14.80);
+		} else if ($('#uplifting').hasClass('selected')) {
+			var randomNumber = Math.floor(Math.random() * (upliftingSayings.length));
+			$('#quoteDisplay').html(upliftingSayings[randomNumber]);
+			rotateEar(dog.earone, 15, 15.25, 14.80);
+			rotateEar(dog.eartwo, -15, -15.15, -14.80);
+		}
+		function rotateEar(obj, defaultRot, fromRot, toRot) {
 			var rotation = { z : defaultRot };
 			var tweenHead = new TWEEN.Tween(rotation)
 				.to({z:fromRot}, 500)
@@ -251,8 +275,8 @@ var comfortingSayings = [
 
 
 	// dog.belly.callback = function newQuote() {
-	// 	var randomNumber = Math.floor(Math.random() * (comfortingSayings.length));
-	// 	document.getElementById('quoteDisplay').innerHTML = comfortingSayings[randomNumber];
+	// 	var randomNumber = Math.floor(Math.random() * (upliftingSayings.length));
+	// 	document.getElementById('quoteDisplay').innerHTML = upliftingSayings[randomNumber];
 	// }
 
 
@@ -458,7 +482,6 @@ var comfortingSayings = [
 			.onUpdate(function(){
 				obj.rotation.z = rotation.z;
 			});
-
 		// after tweenHead, do tweenBack
 		tweenHead.chain(tweenBack);
 		// And after tweenBack, do tweenHead, so it is cycling
@@ -466,34 +489,6 @@ var comfortingSayings = [
 		tweenHead.start();
 	}
 
-
-
-console.log(dog.tail.rotation.z)
-/////tail rotation function
-
-	// var rotation = { z : 15 };
-	// var tweenHead = new TWEEN.Tween(rotation)
-	// 	.to({z:15.25}, 1000)
-	// 	.delay(50)
-	// 	.easing(TWEEN.Easing.Sinusoidal.InOut)
-	// 	.onUpdate(function(){
-	// 		dog.earone.rotation.z = rotation.z;
-	// 		// dog.eartwo.rotation.z = rotation.z;
-	// 	});
-	// var tweenBack = new TWEEN.Tween(rotation)
-	// 	.to({z:14.70}, 1000)
-	// 	.delay(50)
-	// 	.easing(TWEEN.Easing.Sinusoidal.InOut)
-	// 	.onUpdate(function(){
-	// 		dog.earone.rotation.z = rotation.z;
-	// 		// dog.eartwo.rotation.z = rotation.z;
-	// 	});
-
-	// // after tweenHead, do tweenBack
-	// tweenHead.chain(tweenBack);
-	// // And after tweenBack, do tweenHead, so it is cycling
-	// tweenBack.chain(tweenHead);
-	// tweenHead.start();
 	// ANIMATION
 	function render() {
 		// animate mesh or camera (or lights)
@@ -503,10 +498,6 @@ console.log(dog.tail.rotation.z)
 	}
 	render();
 
-	// Angela's attempt to animate
-
-
-
-
 </script>
+<script src="js/master.js"></script>
 </body></html>
