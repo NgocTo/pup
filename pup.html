@@ -414,24 +414,25 @@ var comfortingSayings = [
 	var controls = new THREE.OrbitControls(camera, renderer.domElement);
 
 	// TWEEN
-	rotate(dog.earone, y, 15, 15.25, 14.40);
-	rotate(dog.eartwo, y, -15, -15.25, -14.40);
+	
+	rotate(dog.earone, 15, 15.25, 14.40);
+	rotate(dog.eartwo, -15, -15.25, -14.40);
 
-	function rotate (obj, axis, defaultRot, fromRot, toRot) {
-		var rotation = { axis : defaultRot };
+	function rotate (obj, defaultRot, fromRot, toRot) {
+		var rotation = { z : defaultRot };
 		var tweenHead = new TWEEN.Tween(rotation)
-			.to({axis:fromRot}, 1000)
+			.to({z:fromRot}, 1000)
 			.delay(50)
 			.easing(TWEEN.Easing.Sinusoidal.InOut)
 			.onUpdate(function(){
-				obj.rotation.axis = rotation.axis;
+				obj.rotation.z = rotation.z;
 			});
 		var tweenBack = new TWEEN.Tween(rotation)
 			.to({z:toRot}, 1000)
 			.delay(50)
 			.easing(TWEEN.Easing.Sinusoidal.InOut)
 			.onUpdate(function(){
-				obj.rotation.axis = rotation.axis;
+				obj.rotation.z = rotation.z;
 			});
 
 		// after tweenHead, do tweenBack
