@@ -96,12 +96,24 @@ li {
 /* QUOTES  */
 
 #quoteDisplay{
- background-color:#eeece1;
- color:#81807c;
- text-align:center;
- font-size:20px;
- padding-top:2%;
- padding-bottom:2%;
+    
+width:100%;
+position: absolute;
+left: 0;
+right: 0;
+margin-left: auto;
+margin-right: auto;
+    /* position:absolute;
+    margin:10%;
+    */
+    height:3%;
+    background-color:#eeece1;
+    color:#81807c;
+    text-align:center;
+    font-size:20px;
+    padding:2%;
+    /* padding-top:2%;
+    padding-bottom:2%;  */
 }
 
 @media only screen and (max-width: 825) {
