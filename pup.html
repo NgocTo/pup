@@ -44,7 +44,7 @@
 // scene.add(camera);
 
 var aspect = window.innerWidth / window.innerHeight;
-var d = 20;
+var d = 30;
 camera = new THREE.OrthographicCamera( - d * aspect, d * aspect, d, - d, 1, 1000 );
 
 camera.position.set( 20, 5, 50 ); // all components equal
@@ -210,10 +210,45 @@ var comfortingSayings = [
 	"Your feelings are not facts"
 ]
 
-	// 2. Display saying on click
-	dog.belly.callback = function newQuote() {
+	// 2. Display saying on click and ears tween
+	dog.head.callback = function newQuote() {
 		var randomNumber = Math.floor(Math.random() * (happySayings.length));
 		document.getElementById('quoteDisplay').innerHTML = happySayings[randomNumber];
+	
+	// EARS tween
+	
+	rotate(dog.earone, 15, 15.25, 14.80);
+	rotate(dog.eartwo, -15, -15.15, -14.80);
+
+
+	function rotate(obj, defaultRot, fromRot, toRot) {
+		var rotation = { z : defaultRot };
+		var tweenHead = new TWEEN.Tween(rotation)
+			.to({z:fromRot}, 500)
+			.delay(50)
+			.easing(TWEEN.Easing.Sinusoidal.InOut)
+			.onUpdate(function(){
+				obj.rotation.z = rotation.z;
+				
+			});
+		var tweenBack = new TWEEN.Tween(rotation)
+			.to({z:toRot}, 500)
+			.delay(50)
+			.easing(TWEEN.Easing.Sinusoidal.InOut)
+			.onUpdate(function(){
+				obj.rotation.z = rotation.z;
+			});
+		// after tweenHead, do tweenBack
+		tweenHead.chain(tweenBack);
+		// And after tweenBack, do tweenHead, so it is cycling
+		tweenBack.chain(tweenHead);
+		tweenHead.start();
+		setTimeout(() => {
+			tweenHead.stop();
+			tweenBack.stop();
+		}, 1500);
+	}
+		
 	}
 
 
@@ -245,12 +280,12 @@ var comfortingSayings = [
 	    mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
 
 	    raycaster.setFromCamera( mouse, camera );
-		meshObjects = [dog.belly];
+		meshObjects = [dog.head];
 	    var intersects = raycaster.intersectObjects( meshObjects );
 
 	    if ( intersects.length > 0 ) {
 	        intersects[0].object.callback();
-	    }
+		}
 	}
 	document.addEventListener('mousedown', onDocumentMouseDown, false);
 
@@ -264,7 +299,8 @@ var comfortingSayings = [
 		var headGeom = new THREE.BoxGeometry(11, 11, 11);
 		var bodyMat = new THREE.MeshPhongMaterial({color: 0xdcb275});
 		dog = new THREE.Mesh(headGeom, bodyMat);
-		scene.add(dog);
+		dog.head = dog;
+		scene.add(dog.head);
 
 		//eyes
 		var eyeGeom = new THREE.BoxGeometry(2, 5.5, 5.5);
@@ -415,63 +451,10 @@ var comfortingSayings = [
 
 	// TWEEN
 	
-	rotate(dog.earone, 15, 15.25, 14.80);
-	rotate(dog.eartwo, -15, -15.15, -14.80);
 
 
-	function rotate (obj, defaultRot, fromRot, toRot) {
-		var rotation = { z : defaultRot };
-		var tweenHead = new TWEEN.Tween(rotation)
-			.to({z:fromRot}, 500)
-			.delay(50)
-			.easing(TWEEN.Easing.Sinusoidal.InOut)
-			.onUpdate(function(){
-				obj.rotation.z = rotation.z;
-				
-			});
-		var tweenBack = new TWEEN.Tween(rotation)
-			.to({z:toRot}, 500)
-			.delay(50)
-			.easing(TWEEN.Easing.Sinusoidal.InOut)
-			.onUpdate(function(){
-				obj.rotation.z = rotation.z;
-			});
-		// after tweenHead, do tweenBack
-		tweenHead.chain(tweenBack);
-		// And after tweenBack, do tweenHead, so it is cycling
-		tweenBack.chain(tweenHead);
-		tweenHead.start();
-		setTimeout(() => {
-			tweenHead.stop();
-			tweenBack.stop();
-		}, 1500);
-	}
 
-	
-	// var rotation = { z : 15 };
-	// var tweenHead = new TWEEN.Tween(rotation)
-	// 	.to({z:15.25}, 1000)
-	// 	.delay(50)
-	// 	.easing(TWEEN.Easing.Sinusoidal.InOut)
-	// 	.onUpdate(function(){
-	// 		dog.earone.rotation.z = rotation.z;
-	// 		// dog.eartwo.rotation.z = rotation.z;
-	// 	});
-	// var tweenBack = new TWEEN.Tween(rotation)
-	// 	.to({z:14.70}, 1000)
-	// 	.delay(50)
-	// 	.easing(TWEEN.Easing.Sinusoidal.InOut)
-	// 	.onUpdate(function(){
-	// 		dog.earone.rotation.z = rotation.z;
-	// 		// dog.eartwo.rotation.z = rotation.z;
-	// 	});
 
-	// // after tweenHead, do tweenBack
-	// tweenHead.chain(tweenBack);
-	// // And after tweenBack, do tweenHead, so it is cycling
-	// tweenBack.chain(tweenHead);
-	// tweenHead.start();
-	// ANIMATION
 	function render() {
 		// animate mesh or camera (or lights)
 		requestAnimationFrame(render);
