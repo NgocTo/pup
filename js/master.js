@@ -6,6 +6,15 @@ $(document).ready(function(){
         displayInterface();
     });
 
+    $("#toggleInterface").click(function(e){
+        $( "#controls" ).toggle(300, "linear");
+        if($("#toggleInterface").text() == "Close controls") {
+            $("#toggleInterface").text("See controls");
+        } else if ($("#toggleInterface").text() == "See controls"){
+            $("#toggleInterface").text("Close controls");
+        }
+    });
+
     function displayInterface() {
         $("#controls").css("width", "100%");
     }

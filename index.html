@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <title>PUP</title>
 <link rel="manifest" href="manifest.json">
 <link href="https://fonts.googleapis.com/css?family=Baloo|Merriweather+Sans" rel="stylesheet">
@@ -38,7 +38,7 @@
 		</ul>
 	</div>
 	<div id="quoteDisplay"></div>
-
+	<div id="toggleInterface">Close controls</div>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
@@ -61,6 +61,7 @@
 	var renderer = new THREE.WebGLRenderer({antialias:true});
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	document.body.appendChild(renderer.domElement);
+	// renderer.domElement.style.transform = "rotate(90deg)";
 
 	var dog;
 	var room; var btn;
@@ -263,25 +264,6 @@ var upliftingSayings = [
 			}, 1500);
 		}
 	}
-
-
-	// dog.belly.callback = function newQuote() {
-	// 	var randomNumber = Math.floor(Math.random() * (grumpySayings.length));
-	// 	document.getElementById('quoteDisplay').innerHTML = grumpySayings[randomNumber];
-	// }
-
-
-	// dog.belly.callback = function newQuote() {
-	// 	var randomNumber = Math.floor(Math.random() * (wiseSayings.length));
-	// 	document.getElementById('quoteDisplay').innerHTML = wiseSayings[randomNumber];
-	// }
-
-
-	// dog.belly.callback = function newQuote() {
-	// 	var randomNumber = Math.floor(Math.random() * (upliftingSayings.length));
-	// 	document.getElementById('quoteDisplay').innerHTML = upliftingSayings[randomNumber];
-	// }
-
 
 	var raycaster = new THREE.Raycaster();
 	var mouse = new THREE.Vector2();
@@ -490,6 +472,16 @@ var upliftingSayings = [
 		tweenBack.chain(tweenHead);
 		tweenHead.start();
 	}
+	// window.addEventListener( 'resize', onWindowResize, false );
+	// onWindowResize();
+	// function onWindowResize() {
+	//
+	// 	camera.aspect = window.innerWidth / window.innerHeight;
+	// 	camera.updateProjectionMatrix();
+	//
+	// 	renderer.setSize( window.innerWidth, window.innerHeight );
+	//
+	// }
 
 	// ANIMATION
 	function render() {
