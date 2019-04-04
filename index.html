@@ -12,6 +12,11 @@
 <link rel="stylesheet" href="css/master.css">
 </head>
 <body>
+	<audio autoplay controls loop preload="auto" class="hidden">
+		<!-- <source src="horse.ogg" type="audio/ogg"> -->
+		<source src="audio/Get_Outside.mp3" type="audio/mpeg">
+		Your browser does not support the audio tag.
+	</audio>
 	<div id="overlay"></div>
 	<div class="center" id="intro">
 	    <div class="title">P . U . P</div>
@@ -281,7 +286,6 @@ var upliftingSayings = [
 	var raycaster = new THREE.Raycaster();
 	var mouse = new THREE.Vector2();
 	function onDocumentMouseDown( event ) {
-		console.log('hi');
 	    event.preventDefault();
 
 	    mouse.x = ( event.clientX / renderer.domElement.clientWidth ) * 2 - 1;
