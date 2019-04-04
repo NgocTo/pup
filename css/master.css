@@ -110,6 +110,7 @@ input[type="text"], textarea, [contenteditable]
     position: absolute;
     top: 50%;
     left: 2%;
+    text-align: center;
     transform: translate(-2%, -50%);
 }
 .mood-container {
@@ -208,26 +209,18 @@ input[type="text"], textarea, [contenteditable]
         display: inline-block;
     }
     .color-container {
+        width: 100%;
         left: 50%;
         top: 5%;
         transform: translate(-50%, -5%);
     }
     .mood-container {
+        width: 100%;
         left: 50%;
-        top: 95%;
-        transform: translate(-50%, -95%);
+        top: 90%;
+        transform: translate(-50%, -90%);
     }
-    .color {
-        width: 3rem;
-        height: 3rem;
-        line-height: 3rem;
-        margin: 0;
-    }
-    .mood {
-        width: 3rem;
-        height: 3rem;
-        line-height: 3rem;
-        font-size:0.7rem;
+    .color, .mood {
         margin: 0;
     }
     #quoteDisplay {
@@ -235,6 +228,7 @@ input[type="text"], textarea, [contenteditable]
     }
     #toggleInterface {
         margin-bottom: 0.5rem;
+        z-index:4;
     }
 }
 @media only screen and (max-width: 500px) {
@@ -248,16 +242,13 @@ input[type="text"], textarea, [contenteditable]
         font-size: 0.8rem;
         padding: 0.5rem 3rem;
     }
-    .color {
-        width: 2rem;
-        height: 2rem;
-        line-height: 2rem;
+    .color, .mood {
+        width: 3.5rem;
+        height: 3.5rem;
+        line-height: 3.5rem;
     }
     .mood {
-        width: 2rem;
-        height: 2rem;
-        line-height: 2rem;
-        font-size:0.5rem;
+        font-size: 0.8rem;
     }
     #quoteDisplay {
         font-size:1rem;
