@@ -174,16 +174,18 @@ input[type="text"], textarea, [contenteditable]
 #quoteDisplay{
     width:100%;
     position: absolute;
-    left: 0;
-    right: 0;
+    /* left: 0; */
+    /* right: 0; */
     margin-left: auto;
     margin-right: auto;
     background-color:#eeece1;
     color:#81807c;
     text-align:center;
     font-size:3rem;
-    padding:2%;
+    padding-top:3%;
+    padding-bottom:3%;
 }
+
 #toggleInterface {
     position: absolute;
     bottom: 0;
@@ -254,6 +256,14 @@ input[type="text"], textarea, [contenteditable]
         font-size:1rem;
     }
     #toggleInterface {
-        margin-bottom: 0rem;
+    position: absolute;
+    width:40px;
+    bottom: 40%;
+    left: 10%;
+    /* transform: translate(-50%, -50%); */
+    margin: 0 auto;
+    /* text-align: center; */
+    margin-bottom: 1rem;
+    cursor: pointer;
     }
 }

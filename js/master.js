@@ -8,10 +8,10 @@ $(document).ready(function(){
 
     $("#toggleInterface").click(function(e){
         $( "#controls" ).toggle(300, "linear");
-        if($("#toggleInterface").text() == "Close controls") {
-            $("#toggleInterface").text("See controls");
-        } else if ($("#toggleInterface").text() == "See controls"){
-            $("#toggleInterface").text("Close controls");
+        if($("#toggleInterface").text() == "Close controls <") {
+            $("#toggleInterface").text("See controls >");
+        } else if ($("#toggleInterface").text() == "See controls >"){
+            $("#toggleInterface").text("Close controls <");
         }
     });
 
@@ -27,3 +27,4 @@ $(document).ready(function(){
         $(this).addClass("selected");
     });
 });
+
